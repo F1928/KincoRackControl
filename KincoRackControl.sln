@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KincoP2L", "KincoP2L\KincoP2L.csproj", "{2508DD6B-FC1A-4725-9E66-0687543C2995}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KincoLightManager", "KincoLightManager\KincoLightManager.csproj", "{26BF2B68-6AB2-457A-A6DF-EEB16F169D80}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2508DD6B-FC1A-4725-9E66-0687543C2995}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{2508DD6B-FC1A-4725-9E66-0687543C2995}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{2508DD6B-FC1A-4725-9E66-0687543C2995}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{2508DD6B-FC1A-4725-9E66-0687543C2995}.Debug|x86.ActiveCfg = Debug|x86
+		{2508DD6B-FC1A-4725-9E66-0687543C2995}.Debug|x86.Build.0 = Debug|x86
+		{2508DD6B-FC1A-4725-9E66-0687543C2995}.Release|Any CPU.ActiveCfg = Release|x86
+		{2508DD6B-FC1A-4725-9E66-0687543C2995}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{2508DD6B-FC1A-4725-9E66-0687543C2995}.Release|Mixed Platforms.Build.0 = Release|x86
+		{2508DD6B-FC1A-4725-9E66-0687543C2995}.Release|x86.ActiveCfg = Release|x86
+		{2508DD6B-FC1A-4725-9E66-0687543C2995}.Release|x86.Build.0 = Release|x86
+		{26BF2B68-6AB2-457A-A6DF-EEB16F169D80}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{26BF2B68-6AB2-457A-A6DF-EEB16F169D80}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{26BF2B68-6AB2-457A-A6DF-EEB16F169D80}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{26BF2B68-6AB2-457A-A6DF-EEB16F169D80}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{26BF2B68-6AB2-457A-A6DF-EEB16F169D80}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{26BF2B68-6AB2-457A-A6DF-EEB16F169D80}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{26BF2B68-6AB2-457A-A6DF-EEB16F169D80}.Release|Any CPU.Build.0 = Release|Any CPU
+		{26BF2B68-6AB2-457A-A6DF-EEB16F169D80}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{26BF2B68-6AB2-457A-A6DF-EEB16F169D80}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{26BF2B68-6AB2-457A-A6DF-EEB16F169D80}.Release|x86.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
