@@ -58,6 +58,7 @@
             this.bbiTurnOnRedLED = new DevExpress.XtraBars.BarButtonItem();
             this.popupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.imageCollection = new DevExpress.Utils.ImageCollection(this.components);
+            this.xtraTabPage3 = new DevExpress.XtraTab.XtraTabPage();
             ((System.ComponentModel.ISupportInitialize)(this.groupControl1)).BeginInit();
             this.groupControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
@@ -121,7 +122,7 @@
             this.gridControl1.Location = new System.Drawing.Point(7, 7);
             this.gridControl1.MainView = this.gridView1;
             this.gridControl1.Name = "gridControl1";
-            this.gridControl1.Size = new System.Drawing.Size(227, 154);
+            this.gridControl1.Size = new System.Drawing.Size(190, 154);
             this.gridControl1.TabIndex = 5;
             this.gridControl1.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
             this.gridView1});
@@ -171,27 +172,28 @@
             // 
             // xtraTabControl1
             // 
-            this.xtraTabControl1.Location = new System.Drawing.Point(245, 7);
+            this.xtraTabControl1.Location = new System.Drawing.Point(208, 7);
             this.xtraTabControl1.Name = "xtraTabControl1";
             this.xtraTabControl1.SelectedTabPage = this.xtraTabPage1;
-            this.xtraTabControl1.Size = new System.Drawing.Size(515, 154);
+            this.xtraTabControl1.Size = new System.Drawing.Size(552, 154);
             this.xtraTabControl1.TabIndex = 4;
             this.xtraTabControl1.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
             this.xtraTabPage1,
-            this.xtraTabPage2});
+            this.xtraTabPage2,
+            this.xtraTabPage3});
             this.xtraTabControl1.Text = "xtraTabControl1";
             // 
             // xtraTabPage1
             // 
             this.xtraTabPage1.Name = "xtraTabPage1";
-            this.xtraTabPage1.Size = new System.Drawing.Size(506, 122);
-            this.xtraTabPage1.Text = "xtraTabPage1";
+            this.xtraTabPage1.Size = new System.Drawing.Size(543, 122);
+            this.xtraTabPage1.Text = "多貨架控制";
             // 
             // xtraTabPage2
             // 
             this.xtraTabPage2.Name = "xtraTabPage2";
             this.xtraTabPage2.Size = new System.Drawing.Size(506, 122);
-            this.xtraTabPage2.Text = "xtraTabPage2";
+            this.xtraTabPage2.Text = "多燈控制";
             // 
             // layoutControlGroup1
             // 
@@ -210,9 +212,9 @@
             // 
             this.layoutControlItem1.Control = this.xtraTabControl1;
             this.layoutControlItem1.CustomizationFormText = "layoutControlItem1";
-            this.layoutControlItem1.Location = new System.Drawing.Point(238, 0);
+            this.layoutControlItem1.Location = new System.Drawing.Point(201, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(526, 165);
+            this.layoutControlItem1.Size = new System.Drawing.Size(563, 165);
             this.layoutControlItem1.Text = "layoutControlItem1";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Left;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(0, 0);
@@ -225,7 +227,7 @@
             this.layoutControlItem2.CustomizationFormText = "layoutControlItem2";
             this.layoutControlItem2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem2.Name = "layoutControlItem2";
-            this.layoutControlItem2.Size = new System.Drawing.Size(238, 165);
+            this.layoutControlItem2.Size = new System.Drawing.Size(201, 165);
             this.layoutControlItem2.Text = "layoutControlItem2";
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Left;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(0, 0);
@@ -297,6 +299,12 @@
             this.imageCollection.ImageSize = new System.Drawing.Size(24, 24);
             this.imageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection.ImageStream")));
             // 
+            // xtraTabPage3
+            // 
+            this.xtraTabPage3.Name = "xtraTabPage3";
+            this.xtraTabPage3.Size = new System.Drawing.Size(506, 122);
+            this.xtraTabPage3.Text = "閃燈控制";
+            // 
             // KincoRackControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -363,5 +371,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiTurnOnRedLED;
         private DevExpress.XtraBars.PopupMenu popupMenu;
         private DevExpress.Utils.ImageCollection imageCollection;
+        private DevExpress.XtraTab.XtraTabPage xtraTabPage3;
     }
 }
