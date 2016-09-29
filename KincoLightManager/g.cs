@@ -102,7 +102,6 @@ namespace KincoLightManager
 
         #endregion
 
-
         #region 多灯亮灭控制命令
 
         /// <summary>

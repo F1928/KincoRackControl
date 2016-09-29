@@ -9,12 +9,31 @@ using System.Windows.Forms;
 
 namespace KincoP2L
 {
-    public partial class RegKincoLocator : Form
+    [Function]
+    public partial class RegisterKincoRack : DevExpress.XtraEditors.XtraForm
     {
-        public RegKincoLocator()
+        public RegisterKincoRack()
         {
             InitializeComponent();
+
             this.Clear();
+        }
+
+        private void Clear()
+        {
+            this.rackDataSet.Clear();
+            this.txtRackCellCodePrefix.Text = string.Empty;
+            this.txtRackParentLocatorCode.Text = string.Empty;
+            this.txtRackLocatorCode.Text = string.Empty;
+            decimal suggestAddress = LocatorManager.SuggestRackAddress();
+
+            this.ckBackSide.Checked = false;
+            this.ckFrontSide.Checked = false;
+            
+            this.nRackAddress.Value = suggestAddress;
+            this.btCreate.Enabled = true;
+            this.btSave.Enabled = false;
+            this.txtRackLocatorCode.Focus();
         }
 
         private void btCreate_Click(object sender, EventArgs e)
@@ -33,6 +52,7 @@ namespace KincoP2L
                     this.txtRackLocatorCode.Focus();
                     return;
                 }
+
 
                 if (ckBackSide.Checked == false && ckFrontSide.Checked == false)
                 {
@@ -103,32 +123,31 @@ namespace KincoP2L
                 decimal rackAddress = this.nRackAddress.Value;
                 if (this.ckFrontSide.Checked)
                 {
-                    this.CreateRackCellLocators(rackAddress, newRow.ID, this.nLevelStart.Value, this.nLevelEnd.Value, this.nColStart.Value, this.nColEnd.Value,true);
+                    this.CreateRackCellLocators(rackAddress, newRow.ID, this.nLevelStart.Value, this.nLevelEnd.Value, this.nColStart.Value, this.nColEnd.Value, true);
                 }
                 if (this.ckBackSide.Checked)
                 {
-                    this.CreateRackCellLocators(rackAddress + 1, newRow.ID, this.nLevelStart.Value, this.nLevelEnd.Value, this.nColStart.Value, this.nColEnd.Value,false);
+                    this.CreateRackCellLocators(rackAddress + 1, newRow.ID, this.nLevelStart.Value, this.nLevelEnd.Value, this.nColStart.Value, this.nColEnd.Value, false);
                 }
             }
             finally
             {
-               
+
             }
         }
 
-
-        private void CreateRackCellLocators(decimal rackAddress,decimal rackLocatorID, decimal levelStart, decimal levelEnd, decimal colStart, decimal colEnd,bool isFrontSide)
+        private void CreateRackCellLocators(decimal rackAddress, decimal rackLocatorID, decimal levelStart, decimal levelEnd, decimal colStart, decimal colEnd, bool isFrontSide)
         {
             this.btCreate.Enabled = false;
             this.btSave.Enabled = true;
             decimal rackCellAddress = 0;
             string rackCellLocatorCode = string.Empty;
-            for(decimal l=levelStart; l<=levelEnd;l++)
+            for (decimal l = levelStart; l <= levelEnd; l++)
                 for (decimal c = colStart; c <= colEnd; c++)
                 {
-                    rackCellLocatorCode= this.txtRackCellCodePrefix.Text;
+                    rackCellLocatorCode = this.txtRackCellCodePrefix.Text;
                     rackCellAddress += 1;
-                   // rackCellLocatorCode = rackCellLocatorCode + rackAddress.ToString().PadLeft(3, '0') + l.ToString().PadLeft(2, '0') + c.ToString().PadLeft(3, '0');
+                    // rackCellLocatorCode = rackCellLocatorCode + rackAddress.ToString().PadLeft(3, '0') + l.ToString().PadLeft(2, '0') + c.ToString().PadLeft(3, '0');
                     rackCellLocatorCode = rackCellLocatorCode + rackAddress.ToString().PadLeft(3, '0') + rackCellAddress.ToString().PadLeft(4, '0');
 
                     RackDataSet.IMS_LOCATORRow newLoc = this.rackDataSet.IMS_LOCATOR.NewIMS_LOCATORRow();
@@ -138,7 +157,7 @@ namespace KincoP2L
                     newLoc.SetDISABLE_BILL_IDNull();
                     newLoc.CODE = rackCellLocatorCode;
                     newLoc.NAME = rackCellLocatorCode;
-                    newLoc.DESCRIPTION = string.Format("Intelligent Rack Cell.貨架:{0}面的第:{1}層,第:{2}列",isFrontSide?"正":"背", l, c);
+                    newLoc.DESCRIPTION = string.Format("Intelligent Rack Cell.貨架:{0}面的第:{1}層,第:{2}列", isFrontSide ? "正" : "背", l, c);
                     newLoc.TYPE = 50; // 撿料區域
                     newLoc.PARENT_ID = rackLocatorID;
                     rackDataSet.IMS_LOCATOR.AddIMS_LOCATORRow(newLoc);
@@ -159,22 +178,7 @@ namespace KincoP2L
 
                 }
 
-            this.lbSubTotal.Text = string.Format("共產生:{0}個貨位信息", this.rackDataSet.IMS_INTELLIGENT_RACK_CELL_INFO.Count);
-        }
-
-        private void Clear()
-        {
-            this.rackDataSet.Clear();
-            this.txtRackCellCodePrefix.Text = string.Empty;
-            this.txtRackParentLocatorCode.Text = string.Empty;
-            this.txtRackLocatorCode.Text = string.Empty;
-            decimal suggestAddress = LocatorManager.SuggestRackAddress();
-            this.ckBackSide.Checked = false;
-            this.ckFrontSide.Checked = false;
-            this.nRackAddress.Value = suggestAddress;
-            this.btCreate.Enabled = true;
-            this.btSave.Enabled = false;
-            this.txtRackLocatorCode.Focus();
+           // this.lbSubTotal.Text = string.Format("共產生:{0}個貨位信息", this.rackDataSet.IMS_INTELLIGENT_RACK_CELL_INFO.Count);
         }
 
         private void btSave_Click(object sender, EventArgs e)
@@ -187,7 +191,7 @@ namespace KincoP2L
                     LocatorManager.SaveData(this.rackDataSet.IMS_INTELLIGENT_RACK_CELL_INFO);
                     scope.Commit();
                 }
-                catch(Exception ex)
+                catch (Exception ex)
                 {
                     scope.Rollback();
                     MessageBox.Show(this, ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -199,7 +203,7 @@ namespace KincoP2L
             }
         }
 
-        private void nRackAddress_ValueChanged(object sender, EventArgs e)
+        private void nRackAddress_EditValueChanged(object sender, EventArgs e)
         {
             if (nRackAddress.Value % 2 == 0)
                 nRackAddress.Value += 1;

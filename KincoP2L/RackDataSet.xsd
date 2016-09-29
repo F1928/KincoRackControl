@@ -54,6 +54,15 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
+        <xs:element name="IMS_RACK" msprop:Generator_TableClassName="IMS_RACKDataTable" msprop:Generator_TableVarName="tableIMS_RACK" msprop:Generator_RowChangedName="IMS_RACKRowChanged" msprop:Generator_TablePropName="IMS_RACK" msprop:Generator_RowDeletingName="IMS_RACKRowDeleting" msprop:Generator_RowChangingName="IMS_RACKRowChanging" msprop:Generator_RowEvHandlerName="IMS_RACKRowChangeEventHandler" msprop:Generator_RowDeletedName="IMS_RACKRowDeleted" msprop:Generator_RowClassName="IMS_RACKRow" msprop:Generator_UserTableName="IMS_RACK" msprop:Generator_RowEvArgName="IMS_RACKRowChangeEvent">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CODE" msprop:Generator_ColumnVarNameInTable="columnCODE" msprop:Generator_ColumnPropNameInRow="CODE" msprop:Generator_ColumnPropNameInTable="CODEColumn" msprop:Generator_UserColumnName="CODE" type="xs:string" minOccurs="0" />
+              <xs:element name="FRONT_ADDRESS" msprop:Generator_ColumnVarNameInTable="columnFRONT_ADDRESS" msprop:Generator_ColumnPropNameInRow="FRONT_ADDRESS" msprop:Generator_ColumnPropNameInTable="FRONT_ADDRESSColumn" msprop:Generator_UserColumnName="FRONT_ADDRESS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="BACK_ADDRESS" msprop:Generator_ColumnVarNameInTable="columnBACK_ADDRESS" msprop:Generator_ColumnPropNameInRow="BACK_ADDRESS" msprop:Generator_ColumnPropNameInTable="BACK_ADDRESSColumn" msprop:Generator_UserColumnName="BACK_ADDRESS" type="xs:decimal" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
       </xs:choice>
     </xs:complexType>
     <xs:unique name="Constraint1" msdata:PrimaryKey="true">

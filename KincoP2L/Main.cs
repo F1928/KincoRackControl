@@ -6,48 +6,66 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using KincoLightManager;
-using EZ.DB;
+using DevExpress.XtraNavBar;
 
 namespace KincoP2L
 {
-    public partial class Main : Form
+    public partial class Main : DevExpress.XtraEditors.XtraForm
     {
         public Main()
         {
             InitializeComponent();
         }
 
-        private void btRegLocator_Click(object sender, EventArgs e)
+
+        private void ShowChildForm(NavBarItemLink navBarItem, string formTypeName)
         {
-            RegKincoLocator frmReg = new RegKincoLocator();
-            frmReg.Location = new Point(this.Location.X + this.Width + 5, this.Location.Y);
-            frmReg.ShowDialog(this);
+            foreach (Form existsChildForm in this.MdiChildren)
+            {
+                if (existsChildForm.Name == nbRegRack.Caption)
+                {
+                    this.ActivateMdiChild(existsChildForm);
+                    existsChildForm.Activate();
+                    return;
+                }
+            }
+
+            Type[] types = this.GetType()
+                               .Assembly
+                               .GetTypes()
+                               .Where(f =>
+                               {
+                                   object[] result = f.GetCustomAttributes(typeof(FunctionAttribute), false);
+                                   if (result != null && result.Length > 0)
+                                       return true;
+                                   else
+                                       return false;
+                               })
+                               .ToArray();
+            Type formType =null;
+            foreach (Type tp in types)
+            {
+                if (tp.FullName.EndsWith(formTypeName))
+                {
+                    formType = tp;
+                    break;
+                }
+            }
+
+            if (formType != null)
+            {
+                Form childForm = Activator.CreateInstance(formType) as Form;
+                childForm.Name = navBarItem.Caption;
+                childForm.MdiParent = this;
+                childForm.Show();
+            }
         }
 
 
-        /*
-        private void button1_Click(object sender, EventArgs e)
+        private void navBarControl1_LinkClicked(object sender, NavBarLinkEventArgs e)
         {
-            string cmd = KincoLightManager.g.CreateLightsFlashControlCmd(LightsFlashStatus.Green_Flash,
-                1500, 500, 10,
-                new KeyValuePair<UInt16, UInt16>(1, 1),
-                new KeyValuePair<UInt16, UInt16>(257, 257));
-
-            MessageBox.Show(cmd);
-
-            cmd = KincoLightManager.g.CreateLightsOnOffControlCmd(LightsOnOffStatus.GreenOn,
-                new KeyValuePair<UInt16, UInt16>(1, 1),
-                new KeyValuePair<UInt16, UInt16>(257, 257));
-
-            MessageBox.Show(cmd);
-
-
-            cmd = KincoLightManager.g.CreateRackControlCmd(RackTowerLightsStatus.RackGreenOn_TowerWhiteOn,
-                1, 2, 3, 260, 261);
-            MessageBox.Show(cmd);
-
-        } */
-
+            if (e.Link.Item.Tag == null) return;
+            ShowChildForm(e.Link, e.Link.Item.Tag.ToString());
+        }
     }
 }
