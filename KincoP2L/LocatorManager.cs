@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using EZ.DB;
-using System.Data;
 
 namespace KincoP2L
 {
@@ -68,39 +67,6 @@ SELECT MAX (A.RACK_ADDRESS) + 1 RACK_ADDRESS
         public static void SaveData(System.Data.DataTable table)
         {
             DBAccessor.FromDefaultDb().UpdateDataTable(table, table.TableName);
-        }
-
-        public static RackDataSet.IMS_RACKDataTable GetRackInfoTable()
-        {
-            string cmd = @"SELECT V.CODE,
-       (SELECT MIN (C1.RACK_ADDRESS)
-          FROM IMS_INTELLIGENT_RACK_CELL_INFO C1
-         WHERE C1.RACK_LOCATOR_ID = V.ID)
-          FRONT_ADDRESS,
-       (SELECT MAX (C1.RACK_ADDRESS)
-          FROM IMS_INTELLIGENT_RACK_CELL_INFO C1
-         WHERE C1.RACK_LOCATOR_ID = V.ID)
-          BACK_ADDRESS
-  FROM (SELECT DISTINCT C.RACK_LOCATOR_ID AS ID, L.CODE
-          FROM IMS_INTELLIGENT_RACK_CELL_INFO C, IMS_LOCATOR L
-         WHERE L.ID = C.RACK_LOCATOR_ID) V";
-            RackDataSet.IMS_RACKDataTable tb = new RackDataSet.IMS_RACKDataTable();
-            tb.Merge(DBAccessor.FromDefaultDb().GetDataTable(cmd));
-            return tb;
-
-        }
-
-        public static RackDataSet.IMS_INTELLIGENT_RACK_CELL_INFODataTable GetRackCellInfo(string rackLocatorCode)
-        {
-            string cmd = @"SELECT C.*
-  FROM IMS_INTELLIGENT_RACK_CELL_INFO C, IMS_LOCATOR L
- WHERE     L.ID = C.RACK_LOCATOR_ID
-       AND L.CODE = :LOCATOR_CODE";
-
-            return DBAccessor.FromDefaultDb().GetDataTableByKeyValuePairs<RackDataSet.IMS_INTELLIGENT_RACK_CELL_INFODataTable>(
-                cmd,
-                new KeyValuePair<string, object>("LOCATOR_CODE", rackLocatorCode));
-
         }
 
     }

@@ -93,6 +93,7 @@
     <Compile Include="RegisterKincoRack.Designer.cs">
       <DependentUpon>RegisterKincoRack.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Messenger.cs" />
     <EmbeddedResource Include="KincoRackControl.resx">
       <DependentUpon>KincoRackControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -149,6 +150,9 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="EZ.DB.dll" />
+    <None Include="Resources\blank_gray_24.png" />
+    <None Include="Resources\check_green_24.png" />
+    <None Include="Resources\led24.png" />
     <None Include="Resources\settings.png" />
     <None Include="Resources\switch.png" />
     <None Include="Resources\arrange.png" />

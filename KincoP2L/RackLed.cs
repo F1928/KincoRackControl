@@ -12,6 +12,10 @@ using KincoLightManager;
 
 namespace KincoP2L
 {
+    public class MessageEventArg : EventArgs
+    {
+        public string Message { get; set; }
+    }
     public partial class RackLed : XtraUserControl
     {
         public RackLed()
@@ -38,6 +42,14 @@ namespace KincoP2L
         }
 
         public new event EventHandler Click;
+        public event EventHandler<MessageEventArg> CommandSended;
+
+        private void FireCommandSended(string cmd,string cmdDescription)
+        {
+            string msg = genMessage(cmd, cmdDescription);
+            if (this.CommandSended != null)
+                this.CommandSended(this, new MessageEventArg { Message = msg });
+        }
 
         public object ImageList
         {
@@ -75,12 +87,27 @@ namespace KincoP2L
                 this.Click(this, e);
         }
 
+        private string genMessage(string cmd, string cmdDescription)
+        {
+            int rackNo = (this.RackAddress % 2) == 0 ? (this.RackAddress - 1) : this.RackAddress;
+            string msg = string.Format("{0},向貨架{1}: {2} 第 {3} 號燈 發送【{4}】指令:{5}", 
+                                       DateTime.Now.ToLongTimeString(), 
+                                       rackNo.ToString().PadLeft(3,'0'), 
+                                       this.RackAddress % 2 == 0 ? "背面" : "正面", 
+                                       this.Address.ToString().PadLeft(3, '0'),
+                                       cmdDescription, 
+                                       cmd);
+            return msg;
+        }
+
+
+
         public void TurnOffLed()
         {
             string cmd = KincoLightManager.g.CreateCmd_TurnOffLed(new KeyValuePair<ushort, ushort>(this.RackAddress, this.Address));
             this.ImageIndex = 0;
-            KincoLightManager.g.SendCommand(cmd);            
-            //XtraMessageBox.Show(this, "您發送了一條【關閉貨位指示燈】指令:{0}".FormatWith(cmd), "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            KincoLightManager.g.SendCommand(cmd);
+            FireCommandSended(cmd,"關閉貨位指示燈");           
         }
 
         public void TurnOnGreenLed()
@@ -88,7 +115,7 @@ namespace KincoP2L
             string cmd = KincoLightManager.g.CreateCmd_TurnOnGreenLed(new KeyValuePair<ushort, ushort>(this.RackAddress, this.Address));
             this.ImageIndex = 1;
             KincoLightManager.g.SendCommand(cmd);
-            //XtraMessageBox.Show(this, "您發送了一條【打開貨位綠色指示燈】:{0}".FormatWith(cmd), "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            FireCommandSended(cmd, "打開貨位綠色指示燈");
         }
 
         public void TurnOnRedLed()
@@ -96,7 +123,7 @@ namespace KincoP2L
             string cmd = KincoLightManager.g.CreateCmd_TurnOnRedLed(new KeyValuePair<ushort, ushort>(this.RackAddress, this.Address));
             this.ImageIndex = 2;
             KincoLightManager.g.SendCommand(cmd);
-            //XtraMessageBox.Show(this, "您發送了一條【打開貨位紅色指示燈】:{0}".FormatWith(cmd), "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            FireCommandSended(cmd,"打開貨位紅色指示燈");
         }
 
        

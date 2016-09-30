@@ -60,6 +60,9 @@
               <xs:element name="CODE" msprop:Generator_ColumnVarNameInTable="columnCODE" msprop:Generator_ColumnPropNameInRow="CODE" msprop:Generator_ColumnPropNameInTable="CODEColumn" msprop:Generator_UserColumnName="CODE" type="xs:string" minOccurs="0" />
               <xs:element name="FRONT_ADDRESS" msprop:Generator_ColumnVarNameInTable="columnFRONT_ADDRESS" msprop:Generator_ColumnPropNameInRow="FRONT_ADDRESS" msprop:Generator_ColumnPropNameInTable="FRONT_ADDRESSColumn" msprop:Generator_UserColumnName="FRONT_ADDRESS" type="xs:decimal" minOccurs="0" />
               <xs:element name="BACK_ADDRESS" msprop:Generator_ColumnVarNameInTable="columnBACK_ADDRESS" msprop:Generator_ColumnPropNameInRow="BACK_ADDRESS" msprop:Generator_ColumnPropNameInTable="BACK_ADDRESSColumn" msprop:Generator_UserColumnName="BACK_ADDRESS" type="xs:decimal" minOccurs="0" />
+              <xs:element name="CHECKED" msprop:Generator_ColumnVarNameInTable="columnCHECKED" msprop:Generator_ColumnPropNameInRow="CHECKED" msprop:Generator_ColumnPropNameInTable="CHECKEDColumn" msprop:Generator_UserColumnName="CHECKED" type="xs:boolean" minOccurs="0" />
+              <xs:element name="CHECKED_FRONT" msprop:Generator_ColumnVarNameInTable="columnCHECKED_FRONT" msprop:Generator_ColumnPropNameInRow="CHECKED_FRONT" msprop:Generator_ColumnPropNameInTable="CHECKED_FRONTColumn" msprop:Generator_UserColumnName="CHECKED_FRONT" type="xs:boolean" minOccurs="0" />
+              <xs:element name="CHECKED_BACK" msprop:Generator_ColumnVarNameInTable="columnCHECKED_BACK" msprop:Generator_ColumnPropNameInRow="CHECKED_BACK" msprop:Generator_ColumnPropNameInTable="CHECKED_BACKColumn" msprop:Generator_UserColumnName="CHECKED_BACK" type="xs:boolean" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>
