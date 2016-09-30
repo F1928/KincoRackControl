@@ -1268,6 +1268,12 @@ namespace KincoP2L {
             
             private global::System.Data.DataColumn columnBACK_ADDRESS;
             
+            private global::System.Data.DataColumn columnCHECKED;
+            
+            private global::System.Data.DataColumn columnCHECKED_FRONT;
+            
+            private global::System.Data.DataColumn columnCHECKED_BACK;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public IMS_RACKDataTable() {
@@ -1327,6 +1333,30 @@ namespace KincoP2L {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CHECKEDColumn {
+                get {
+                    return this.columnCHECKED;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CHECKED_FRONTColumn {
+                get {
+                    return this.columnCHECKED_FRONT;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn CHECKED_BACKColumn {
+                get {
+                    return this.columnCHECKED_BACK;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1362,12 +1392,15 @@ namespace KincoP2L {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public IMS_RACKRow AddIMS_RACKRow(string CODE, decimal FRONT_ADDRESS, decimal BACK_ADDRESS) {
+            public IMS_RACKRow AddIMS_RACKRow(string CODE, decimal FRONT_ADDRESS, decimal BACK_ADDRESS, bool CHECKED, bool CHECKED_FRONT, bool CHECKED_BACK) {
                 IMS_RACKRow rowIMS_RACKRow = ((IMS_RACKRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         CODE,
                         FRONT_ADDRESS,
-                        BACK_ADDRESS};
+                        BACK_ADDRESS,
+                        CHECKED,
+                        CHECKED_FRONT,
+                        CHECKED_BACK};
                 rowIMS_RACKRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowIMS_RACKRow);
                 return rowIMS_RACKRow;
@@ -1393,6 +1426,9 @@ namespace KincoP2L {
                 this.columnCODE = base.Columns["CODE"];
                 this.columnFRONT_ADDRESS = base.Columns["FRONT_ADDRESS"];
                 this.columnBACK_ADDRESS = base.Columns["BACK_ADDRESS"];
+                this.columnCHECKED = base.Columns["CHECKED"];
+                this.columnCHECKED_FRONT = base.Columns["CHECKED_FRONT"];
+                this.columnCHECKED_BACK = base.Columns["CHECKED_BACK"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1404,6 +1440,12 @@ namespace KincoP2L {
                 base.Columns.Add(this.columnFRONT_ADDRESS);
                 this.columnBACK_ADDRESS = new global::System.Data.DataColumn("BACK_ADDRESS", typeof(decimal), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnBACK_ADDRESS);
+                this.columnCHECKED = new global::System.Data.DataColumn("CHECKED", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCHECKED);
+                this.columnCHECKED_FRONT = new global::System.Data.DataColumn("CHECKED_FRONT", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCHECKED_FRONT);
+                this.columnCHECKED_BACK = new global::System.Data.DataColumn("CHECKED_BACK", typeof(bool), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCHECKED_BACK);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2447,6 +2489,54 @@ namespace KincoP2L {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool CHECKED {
+                get {
+                    try {
+                        return ((bool)(this[this.tableIMS_RACK.CHECKEDColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“IMS_RACK”中列“CHECKED”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableIMS_RACK.CHECKEDColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool CHECKED_FRONT {
+                get {
+                    try {
+                        return ((bool)(this[this.tableIMS_RACK.CHECKED_FRONTColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“IMS_RACK”中列“CHECKED_FRONT”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableIMS_RACK.CHECKED_FRONTColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool CHECKED_BACK {
+                get {
+                    try {
+                        return ((bool)(this[this.tableIMS_RACK.CHECKED_BACKColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("表“IMS_RACK”中列“CHECKED_BACK”的值为 DBNull。", e);
+                    }
+                }
+                set {
+                    this[this.tableIMS_RACK.CHECKED_BACKColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsCODENull() {
                 return this.IsNull(this.tableIMS_RACK.CODEColumn);
             }
@@ -2479,6 +2569,42 @@ namespace KincoP2L {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetBACK_ADDRESSNull() {
                 this[this.tableIMS_RACK.BACK_ADDRESSColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCHECKEDNull() {
+                return this.IsNull(this.tableIMS_RACK.CHECKEDColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCHECKEDNull() {
+                this[this.tableIMS_RACK.CHECKEDColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCHECKED_FRONTNull() {
+                return this.IsNull(this.tableIMS_RACK.CHECKED_FRONTColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCHECKED_FRONTNull() {
+                this[this.tableIMS_RACK.CHECKED_FRONTColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsCHECKED_BACKNull() {
+                return this.IsNull(this.tableIMS_RACK.CHECKED_BACKColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetCHECKED_BACKNull() {
+                this[this.tableIMS_RACK.CHECKED_BACKColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -90,18 +90,16 @@ SELECT MAX (A.RACK_ADDRESS) + 1 RACK_ADDRESS
 
         }
 
-        public static RackDataSet.IMS_INTELLIGENT_RACK_CELL_INFODataTable GetRackCellInfo(string rackLocatorCode, decimal rackAddress)
+        public static RackDataSet.IMS_INTELLIGENT_RACK_CELL_INFODataTable GetRackCellInfo(string rackLocatorCode)
         {
             string cmd = @"SELECT C.*
   FROM IMS_INTELLIGENT_RACK_CELL_INFO C, IMS_LOCATOR L
  WHERE     L.ID = C.RACK_LOCATOR_ID
-       AND C.RACK_ADDRESS = :RACK_ADDRESS
        AND L.CODE = :LOCATOR_CODE";
 
             return DBAccessor.FromDefaultDb().GetDataTableByKeyValuePairs<RackDataSet.IMS_INTELLIGENT_RACK_CELL_INFODataTable>(
                 cmd,
-                new KeyValuePair<string, object>("LOCATOR_CODE", rackLocatorCode),
-                new KeyValuePair<string, object>("RACK_ADDRESS", rackAddress));
+                new KeyValuePair<string, object>("LOCATOR_CODE", rackLocatorCode));
 
         }
 

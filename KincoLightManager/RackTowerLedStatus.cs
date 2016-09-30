@@ -13,37 +13,37 @@ namespace KincoLightManager
     public enum RackTowerLedStatus
     {
         /// <summary>
-        /// 货架所有灯灭，五色灯单色灯灭
+        /// 0: 货架所有灯灭，五色灯单色灯灭
         /// </summary>
         RackLedOff_TowerWhiteOff=0,
 
         /// <summary>
-        /// 货架所有灯亮绿色，五色灯单色灯亮
+        /// 1: 货架所有灯亮绿色，五色灯单色灯亮
         /// </summary>
         RackGreenOn_TowerWhiteOn=1,
 
         /// <summary>
-        /// 货架所有灯亮红色，五色灯单色灯亮
+        /// 2: 货架所有灯亮红色，五色灯单色灯亮
         /// </summary>
         RackRedOn_TowerWhiteOn=2,
 
         /// <summary>
-        /// 货架红绿灯塔灭
+        /// 3: 货架红绿灯塔灭
         /// </summary>
         Tower_RedOff_GreenOff=3,
 
         /// <summary>
-        /// 货架红灯塔亮
+        /// 4: 货架红灯塔亮
         /// </summary>
         Tower_RedOn=4,
 
         /// <summary>
-        /// 货架绿灯塔亮
+        /// 5: 货架绿灯塔亮
         /// </summary>
         Tower_GreenOn=5,
 
         /// <summary>
-        /// 货架红绿灯塔都亮
+        /// 6: 货架红绿灯塔都亮
         /// </summary>
         Tower_RedOn_GreenOn=6
     }
