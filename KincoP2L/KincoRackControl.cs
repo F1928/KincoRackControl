@@ -172,7 +172,7 @@ namespace KincoP2L
                             led.ImageList = this.imageCollection;
                             led.Hint = c.CODE;
                             led.Click += new EventHandler(led_Click);
-                            led.CommandSended += new EventHandler<MessageEventArg>(led_CommandSended);
+                            led.CommandSended += new EventHandler<CommandEventArg>(led_CommandSended);
                             if (isFrontSide)
                                 this.tableLayoutPanelFront.Controls.Add(led, (int)c.COL_NUM-1, (int)c.ROW_NUM-1);
                             else
@@ -201,11 +201,17 @@ namespace KincoP2L
 
         }
 
-       
-        void led_CommandSended(object sender, MessageEventArg e)
+        void LogMessage(CommandEventArg e)
         {
-            this.messageLogs.Insert(0, e.Message+"\r\n");
+            string msg = Boss.GetLogMessage(e.CommandType, e.Command);
+            this.messageLogs.Insert(0, msg + "\r\n");
             this.mmLog.Text = this.messageLogs.ToString();
+        }
+
+       
+        void led_CommandSended(object sender, CommandEventArg e)
+        {            
+            this.LogMessage(e);
         }
              
 
@@ -232,9 +238,11 @@ namespace KincoP2L
 
         private void SendMutiRackControlCmd()
         {
-            if (this.bindingSource.Position < 0)
+            var list = this.rackDataSet.IMS_RACK.Where(f => f.CHECKED);
+
+            if (this.bindingSource.Position < 0 || list.Count()<=0 )
             {
-                Messenger.ShowException("請選擇您要控制的貨架資料!");
+                Messenger.ShowException("請勾選您要控制的貨架資料!");
                 return;
             }
             bool cked=false;
@@ -264,6 +272,25 @@ namespace KincoP2L
             if (this.ckMutiRackControl6.Checked)
                 toStatus = RackTowerLedStatus.Tower_RedOn_GreenOn;
 
+            
+            List<ushort> rackAddressList = new List<ushort>();
+            foreach (var row in list)
+            {
+                if (row.CHECKED_FRONT)
+                    rackAddressList.Add((ushort)row.FRONT_ADDRESS);
+                if (row.CHECKED_BACK)
+                    rackAddressList.Add((ushort)row.BACK_ADDRESS);
+                if (row.CHECKED_BACK == false && row.CHECKED_FRONT == false)
+                {
+                    rackAddressList.Add((ushort)row.FRONT_ADDRESS);
+                    rackAddressList.Add((ushort)row.BACK_ADDRESS);
+                }
+            }
+
+            KincoLightManager.Boss cmdBoss = new Boss();
+            cmdBoss.AfterCommandSend += (o, e) => { this.LogMessage(e); };
+            cmdBoss.SendRackControlCmd(toStatus, rackAddressList.ToArray());
+
         }
 
         private void btCreateRactCells_Click(object sender, EventArgs e)
@@ -276,7 +303,7 @@ namespace KincoP2L
         {
             if (tabControl.SelectedTabPage == pageMutiRackControl)
             {
-
+                this.SendMutiRackControlCmd();
             }
         }
 
