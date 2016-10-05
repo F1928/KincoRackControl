@@ -86,6 +86,12 @@ SELECT MAX (A.RACK_ADDRESS) + 1 RACK_ADDRESS
          WHERE L.ID = C.RACK_LOCATOR_ID) V";
             RackDataSet.IMS_RACKDataTable tb = new RackDataSet.IMS_RACKDataTable();
             tb.Merge(DBAccessor.FromDefaultDb().GetDataTable(cmd));
+            foreach (var x in tb)
+            {
+                x.CHECKED = false;
+                x.CHECKED_BACK = false;
+                x.CHECKED_FRONT = false;
+            }
             return tb;
 
         }
