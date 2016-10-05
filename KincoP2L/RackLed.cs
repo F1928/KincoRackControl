@@ -12,12 +12,16 @@ using KincoLightManager;
 
 namespace KincoP2L
 {
+    
     public partial class RackLed : XtraUserControl
     {
         public RackLed()
         {
             InitializeComponent();
+            this.boss = new Boss();
         }
+
+        private Boss boss;
 
         public UInt16 Address
         {
@@ -38,6 +42,19 @@ namespace KincoP2L
         }
 
         public new event EventHandler Click;
+
+        public event EventHandler<CommandEventArg> CommandSended
+        {
+            add
+            {
+                this.boss.AfterCommandSend += value;
+            }
+            remove
+            {
+                this.boss.AfterCommandSend -= value;
+            }
+        }
+        
 
         public object ImageList
         {
@@ -77,26 +94,20 @@ namespace KincoP2L
 
         public void TurnOffLed()
         {
-            string cmd = KincoLightManager.g.CreateCmd_TurnOffLed(new KeyValuePair<ushort, ushort>(this.RackAddress, this.Address));
-            this.ImageIndex = 0;
-            KincoLightManager.g.SendCommand(cmd);            
-            //XtraMessageBox.Show(this, "您發送了一條【關閉貨位指示燈】指令:{0}".FormatWith(cmd), "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.boss.TurnOffLed(new KeyValuePair<ushort, ushort>(this.RackAddress, this.Address));
+            this.ImageIndex = 0;          
         }
 
         public void TurnOnGreenLed()
         {
-            string cmd = KincoLightManager.g.CreateCmd_TurnOnGreenLed(new KeyValuePair<ushort, ushort>(this.RackAddress, this.Address));
+            this.boss.TurnOnGreenLed(new KeyValuePair<ushort, ushort>(this.RackAddress, this.Address));
             this.ImageIndex = 1;
-            KincoLightManager.g.SendCommand(cmd);
-            //XtraMessageBox.Show(this, "您發送了一條【打開貨位綠色指示燈】:{0}".FormatWith(cmd), "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         public void TurnOnRedLed()
         {
-            string cmd = KincoLightManager.g.CreateCmd_TurnOnRedLed(new KeyValuePair<ushort, ushort>(this.RackAddress, this.Address));
+            this.boss.TurnOnRedLed(new KeyValuePair<ushort, ushort>(this.RackAddress, this.Address));
             this.ImageIndex = 2;
-            KincoLightManager.g.SendCommand(cmd);
-            //XtraMessageBox.Show(this, "您發送了一條【打開貨位紅色指示燈】:{0}".FormatWith(cmd), "消息", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
        

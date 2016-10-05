@@ -44,7 +44,7 @@
     <Compile Include="CommandCenter.cs" />
     <Compile Include="CRC.cs" />
     <Compile Include="ExtensionUtil.cs" />
-    <Compile Include="g.cs" />
+    <Compile Include="Boss.cs" />
     <Compile Include="LedFlashStatus.cs" />
     <Compile Include="LedOnOffStatus.cs" />
     <Compile Include="RackTowerLedStatus.cs" />
