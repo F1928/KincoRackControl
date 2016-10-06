@@ -91,6 +91,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="LedFlashParamPicker.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LedFlashParamPicker.Designer.cs">
+      <DependentUpon>LedFlashParamPicker.cs</DependentUpon>
+    </Compile>
     <Compile Include="Utils\FunctionAttribute.cs" />
     <Compile Include="KincoRackControl.cs">
       <SubType>Form</SubType>
@@ -127,6 +133,9 @@
     <Compile Include="Utils\Messenger.cs" />
     <EmbeddedResource Include="KincoRackControl.resx">
       <DependentUpon>KincoRackControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LedFlashParamPicker.resx">
+      <DependentUpon>LedFlashParamPicker.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>

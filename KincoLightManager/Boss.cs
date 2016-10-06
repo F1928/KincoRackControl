@@ -63,6 +63,7 @@ namespace KincoLightManager
             FireAfterCommandSendEvent(cmd, flashStatus);
         }
 
+
         public void TurnOffRackLedAndTowerWhiteLed(params UInt16[] racks)
         {
             string cmd = CommandCenter.CreateCmd_TurnOffRackLedAndTowerWhiteLed(racks);
@@ -142,14 +143,7 @@ namespace KincoLightManager
             Boss.SendCommand(cmd);
             FireAfterCommandSendEvent(cmd, LedOnOffStatus.RedOn);
         }
-
-        public void SendLightsFlashControlCmd(LedFlashStatus flashStatus, UInt16 lightsOnTime, UInt16 lightsOffTime, UInt16 flashCount, params KeyValuePair<UInt16, UInt16>[] rackNo_lightNo_Pairs)
-        {
-            string cmd = CommandCenter.CreateLightsFlashControlCmd(flashStatus, lightsOnTime, lightsOffTime, flashCount, rackNo_lightNo_Pairs);
-            FireBeforeCommandSendEvent(cmd, flashStatus);
-            Boss.SendCommand(cmd);
-            FireAfterCommandSendEvent(cmd, flashStatus);
-        }
+        
 
         public void FlashGreenLed(UInt16 lightsOnTime, UInt16 lightsOffTime, UInt16 flashCount, params KeyValuePair<UInt16, UInt16>[] rackNo_lightNo_Pairs)
         {

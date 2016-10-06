@@ -67,7 +67,13 @@
             this.layoutControlItem11 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
             this.pageMutiLightControl = new DevExpress.XtraTab.XtraTabPage();
+            this.mmSelectedLightsForMulti = new DevExpress.XtraEditors.MemoEdit();
+            this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
+            this.ckRedLinghtOn = new DevExpress.XtraEditors.CheckEdit();
+            this.ckCloseLight = new DevExpress.XtraEditors.CheckEdit();
+            this.ckGreenLightOn = new DevExpress.XtraEditors.CheckEdit();
             this.pageLightFlashControl = new DevExpress.XtraTab.XtraTabPage();
+            this.mmSelectedLightsForFlash = new DevExpress.XtraEditors.MemoEdit();
             this.layoutControlGroup1 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -90,12 +96,17 @@
             this.bbiTurnOffLED = new DevExpress.XtraBars.BarButtonItem();
             this.bbiTurnOnGreenLED = new DevExpress.XtraBars.BarButtonItem();
             this.bbiTurnOnRedLED = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiSelect = new DevExpress.XtraBars.BarButtonItem();
             this.popupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
-            this.imageCollection = new DevExpress.Utils.ImageCollection(this.components);
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.pageFront = new DevExpress.XtraTab.XtraTabPage();
             this.pageBack = new DevExpress.XtraTab.XtraTabPage();
             this.tableLayoutPanelBack = new System.Windows.Forms.TableLayoutPanel();
+            this.panelControl2 = new DevExpress.XtraEditors.PanelControl();
+            this.ckFlashRed = new DevExpress.XtraEditors.CheckEdit();
+            this.ckFlashGreen = new DevExpress.XtraEditors.CheckEdit();
+            this.bbiFlashGreen = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiFlashRed = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -125,6 +136,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            this.pageMutiLightControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mmSelectedLightsForMulti.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
+            this.panelControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ckRedLinghtOn.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckCloseLight.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckGreenLightOn.Properties)).BeginInit();
+            this.pageLightFlashControl.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.mmSelectedLightsForFlash.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
@@ -140,11 +160,14 @@
             this.dockPanel1_Container.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mmLog.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).BeginInit();
             this.xtraTabControl2.SuspendLayout();
             this.pageFront.SuspendLayout();
             this.pageBack.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).BeginInit();
+            this.panelControl2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ckFlashRed.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckFlashGreen.Properties)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanelFront
@@ -195,7 +218,8 @@
             this.btClear.Size = new System.Drawing.Size(87, 35);
             this.btClear.StyleController = this.layoutControl1;
             this.btClear.TabIndex = 7;
-            this.btClear.Text = "清除LOG";
+            this.btClear.Text = "清    除";
+            this.btClear.Click += new System.EventHandler(this.btClear_Click);
             // 
             // btSendCommand
             // 
@@ -340,6 +364,7 @@
             this.pageMutiLightControl,
             this.pageLightFlashControl});
             this.tabControl.Text = "xtraTabControl1";
+            this.tabControl.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.tabControl_SelectedPageChanged);
             // 
             // pageMutiRackControl
             // 
@@ -574,15 +599,87 @@
             // 
             // pageMutiLightControl
             // 
+            this.pageMutiLightControl.Controls.Add(this.mmSelectedLightsForMulti);
+            this.pageMutiLightControl.Controls.Add(this.panelControl1);
             this.pageMutiLightControl.Name = "pageMutiLightControl";
             this.pageMutiLightControl.Size = new System.Drawing.Size(464, 143);
             this.pageMutiLightControl.Text = "多燈控制";
             // 
+            // mmSelectedLightsForMulti
+            // 
+            this.mmSelectedLightsForMulti.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mmSelectedLightsForMulti.Location = new System.Drawing.Point(0, 0);
+            this.mmSelectedLightsForMulti.Name = "mmSelectedLightsForMulti";
+            this.mmSelectedLightsForMulti.Properties.ReadOnly = true;
+            this.mmSelectedLightsForMulti.Size = new System.Drawing.Size(464, 102);
+            this.mmSelectedLightsForMulti.TabIndex = 1;
+            // 
+            // panelControl1
+            // 
+            this.panelControl1.Controls.Add(this.ckRedLinghtOn);
+            this.panelControl1.Controls.Add(this.ckCloseLight);
+            this.panelControl1.Controls.Add(this.ckGreenLightOn);
+            this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl1.Location = new System.Drawing.Point(0, 102);
+            this.panelControl1.Name = "panelControl1";
+            this.panelControl1.Size = new System.Drawing.Size(464, 41);
+            this.panelControl1.TabIndex = 11;
+            // 
+            // ckRedLinghtOn
+            // 
+            this.ckRedLinghtOn.Location = new System.Drawing.Point(304, 8);
+            this.ckRedLinghtOn.Name = "ckRedLinghtOn";
+            this.ckRedLinghtOn.Properties.Caption = "亮紅燈(狀態碼:2)";
+            this.ckRedLinghtOn.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.UserDefined;
+            this.ckRedLinghtOn.Properties.PictureChecked = global::KincoP2L.Properties.Resources.check_green_24;
+            this.ckRedLinghtOn.Properties.PictureGrayed = global::KincoP2L.Properties.Resources.blank_gray_24;
+            this.ckRedLinghtOn.Properties.PictureUnchecked = global::KincoP2L.Properties.Resources.blank_gray_24;
+            this.ckRedLinghtOn.Size = new System.Drawing.Size(132, 28);
+            this.ckRedLinghtOn.StyleController = this.layoutControl2;
+            this.ckRedLinghtOn.TabIndex = 10;
+            // 
+            // ckCloseLight
+            // 
+            this.ckCloseLight.Location = new System.Drawing.Point(5, 8);
+            this.ckCloseLight.Name = "ckCloseLight";
+            this.ckCloseLight.Properties.Caption = "關燈(狀態碼:0)";
+            this.ckCloseLight.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.UserDefined;
+            this.ckCloseLight.Properties.PictureChecked = global::KincoP2L.Properties.Resources.check_green_24;
+            this.ckCloseLight.Properties.PictureGrayed = global::KincoP2L.Properties.Resources.blank_gray_24;
+            this.ckCloseLight.Properties.PictureUnchecked = global::KincoP2L.Properties.Resources.blank_gray_24;
+            this.ckCloseLight.Size = new System.Drawing.Size(119, 28);
+            this.ckCloseLight.StyleController = this.layoutControl2;
+            this.ckCloseLight.TabIndex = 8;
+            // 
+            // ckGreenLightOn
+            // 
+            this.ckGreenLightOn.Location = new System.Drawing.Point(153, 8);
+            this.ckGreenLightOn.Name = "ckGreenLightOn";
+            this.ckGreenLightOn.Properties.Caption = "亮綠燈(狀態碼:1)";
+            this.ckGreenLightOn.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.UserDefined;
+            this.ckGreenLightOn.Properties.PictureChecked = global::KincoP2L.Properties.Resources.check_green_24;
+            this.ckGreenLightOn.Properties.PictureGrayed = global::KincoP2L.Properties.Resources.blank_gray_24;
+            this.ckGreenLightOn.Properties.PictureUnchecked = global::KincoP2L.Properties.Resources.blank_gray_24;
+            this.ckGreenLightOn.Size = new System.Drawing.Size(131, 28);
+            this.ckGreenLightOn.StyleController = this.layoutControl2;
+            this.ckGreenLightOn.TabIndex = 9;
+            // 
             // pageLightFlashControl
             // 
+            this.pageLightFlashControl.Controls.Add(this.mmSelectedLightsForFlash);
+            this.pageLightFlashControl.Controls.Add(this.panelControl2);
             this.pageLightFlashControl.Name = "pageLightFlashControl";
             this.pageLightFlashControl.Size = new System.Drawing.Size(464, 143);
             this.pageLightFlashControl.Text = "閃燈控制";
+            // 
+            // mmSelectedLightsForFlash
+            // 
+            this.mmSelectedLightsForFlash.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mmSelectedLightsForFlash.Location = new System.Drawing.Point(0, 0);
+            this.mmSelectedLightsForFlash.Name = "mmSelectedLightsForFlash";
+            this.mmSelectedLightsForFlash.Properties.ReadOnly = true;
+            this.mmSelectedLightsForFlash.Size = new System.Drawing.Size(464, 102);
+            this.mmSelectedLightsForFlash.TabIndex = 1;
             // 
             // layoutControlGroup1
             // 
@@ -708,6 +805,7 @@
             // 
             // imageCollectionOfMenu
             // 
+            this.imageCollectionOfMenu.ImageSize = new System.Drawing.Size(24, 24);
             this.imageCollectionOfMenu.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollectionOfMenu.ImageStream")));
             // 
             // barManager
@@ -722,8 +820,11 @@
             this.barManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.bbiTurnOffLED,
             this.bbiTurnOnGreenLED,
-            this.bbiTurnOnRedLED});
-            this.barManager.MaxItemId = 3;
+            this.bbiTurnOnRedLED,
+            this.bbiSelect,
+            this.bbiFlashGreen,
+            this.bbiFlashRed});
+            this.barManager.MaxItemId = 6;
             // 
             // dockManager
             // 
@@ -794,19 +895,26 @@
             this.bbiTurnOnRedLED.Name = "bbiTurnOnRedLED";
             this.bbiTurnOnRedLED.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiTurnOnRedLED_ItemClick);
             // 
+            // bbiSelect
+            // 
+            this.bbiSelect.Caption = "選擇";
+            this.bbiSelect.Id = 3;
+            this.bbiSelect.ImageIndex = 3;
+            this.bbiSelect.Name = "bbiSelect";
+            this.bbiSelect.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            this.bbiSelect.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSelect_ItemClick);
+            // 
             // popupMenu
             // 
             this.popupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiTurnOffLED, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiSelect),
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiTurnOffLED, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiTurnOnGreenLED),
-            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiTurnOnRedLED, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph)});
+            new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiTurnOnRedLED, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiFlashGreen, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiFlashRed)});
             this.popupMenu.Manager = this.barManager;
             this.popupMenu.Name = "popupMenu";
-            // 
-            // imageCollection
-            // 
-            this.imageCollection.ImageSize = new System.Drawing.Size(24, 24);
-            this.imageCollection.ImageStream = ((DevExpress.Utils.ImageCollectionStreamer)(resources.GetObject("imageCollection.ImageStream")));
             // 
             // xtraTabControl2
             // 
@@ -849,6 +957,58 @@
             this.tableLayoutPanelBack.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanelBack.Size = new System.Drawing.Size(851, 88);
             this.tableLayoutPanelBack.TabIndex = 1;
+            // 
+            // panelControl2
+            // 
+            this.panelControl2.Controls.Add(this.ckFlashRed);
+            this.panelControl2.Controls.Add(this.ckFlashGreen);
+            this.panelControl2.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelControl2.Location = new System.Drawing.Point(0, 102);
+            this.panelControl2.Name = "panelControl2";
+            this.panelControl2.Size = new System.Drawing.Size(464, 41);
+            this.panelControl2.TabIndex = 12;
+            // 
+            // ckFlashRed
+            // 
+            this.ckFlashRed.Location = new System.Drawing.Point(304, 8);
+            this.ckFlashRed.Name = "ckFlashRed";
+            this.ckFlashRed.Properties.Caption = "紅燈閃爍(狀態碼:2)";
+            this.ckFlashRed.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.UserDefined;
+            this.ckFlashRed.Properties.PictureChecked = global::KincoP2L.Properties.Resources.check_green_24;
+            this.ckFlashRed.Properties.PictureGrayed = global::KincoP2L.Properties.Resources.blank_gray_24;
+            this.ckFlashRed.Properties.PictureUnchecked = global::KincoP2L.Properties.Resources.blank_gray_24;
+            this.ckFlashRed.Size = new System.Drawing.Size(142, 28);
+            this.ckFlashRed.StyleController = this.layoutControl2;
+            this.ckFlashRed.TabIndex = 10;
+            // 
+            // ckFlashGreen
+            // 
+            this.ckFlashGreen.Location = new System.Drawing.Point(5, 8);
+            this.ckFlashGreen.Name = "ckFlashGreen";
+            this.ckFlashGreen.Properties.Caption = "綠燈閃爍(狀態碼:1)";
+            this.ckFlashGreen.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.UserDefined;
+            this.ckFlashGreen.Properties.PictureChecked = global::KincoP2L.Properties.Resources.check_green_24;
+            this.ckFlashGreen.Properties.PictureGrayed = global::KincoP2L.Properties.Resources.blank_gray_24;
+            this.ckFlashGreen.Properties.PictureUnchecked = global::KincoP2L.Properties.Resources.blank_gray_24;
+            this.ckFlashGreen.Size = new System.Drawing.Size(146, 28);
+            this.ckFlashGreen.StyleController = this.layoutControl2;
+            this.ckFlashGreen.TabIndex = 8;
+            // 
+            // bbiFlashGreen
+            // 
+            this.bbiFlashGreen.Caption = "綠燈閃爍";
+            this.bbiFlashGreen.Id = 4;
+            this.bbiFlashGreen.ImageIndex = 4;
+            this.bbiFlashGreen.Name = "bbiFlashGreen";
+            this.bbiFlashGreen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFlashGreen_ItemClick);
+            // 
+            // bbiFlashRed
+            // 
+            this.bbiFlashRed.Caption = "紅燈閃爍";
+            this.bbiFlashRed.Id = 5;
+            this.bbiFlashRed.ImageIndex = 5;
+            this.bbiFlashRed.Name = "bbiFlashRed";
+            this.bbiFlashRed.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFlashRed_ItemClick);
             // 
             // KincoRackControl
             // 
@@ -895,6 +1055,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem11)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            this.pageMutiLightControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.mmSelectedLightsForMulti.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
+            this.panelControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ckRedLinghtOn.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckCloseLight.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckGreenLightOn.Properties)).EndInit();
+            this.pageLightFlashControl.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.mmSelectedLightsForFlash.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
@@ -910,11 +1079,14 @@
             this.dockPanel1_Container.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mmLog.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.popupMenu)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imageCollection)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabControl2)).EndInit();
             this.xtraTabControl2.ResumeLayout(false);
             this.pageFront.ResumeLayout(false);
             this.pageBack.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.panelControl2)).EndInit();
+            this.panelControl2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.ckFlashRed.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckFlashGreen.Properties)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -947,7 +1119,6 @@
         private DevExpress.XtraBars.BarButtonItem bbiTurnOnGreenLED;
         private DevExpress.XtraBars.BarButtonItem bbiTurnOnRedLED;
         private DevExpress.XtraBars.PopupMenu popupMenu;
-        private DevExpress.Utils.ImageCollection imageCollection;
         private DevExpress.XtraTab.XtraTabPage pageLightFlashControl;
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemChecked;
         private DevExpress.XtraGrid.Columns.GridColumn colCHECKED;
@@ -987,5 +1158,17 @@
         private DevExpress.XtraEditors.Repository.RepositoryItemCheckEdit repositoryItemCheckBack;
         private DevExpress.XtraEditors.SimpleButton btCreateRactCells;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem12;
+        private DevExpress.XtraBars.BarButtonItem bbiSelect;
+        private DevExpress.XtraEditors.MemoEdit mmSelectedLightsForMulti;
+        private DevExpress.XtraEditors.MemoEdit mmSelectedLightsForFlash;
+        private DevExpress.XtraEditors.PanelControl panelControl1;
+        private DevExpress.XtraEditors.CheckEdit ckRedLinghtOn;
+        private DevExpress.XtraEditors.CheckEdit ckCloseLight;
+        private DevExpress.XtraEditors.CheckEdit ckGreenLightOn;
+        private DevExpress.XtraEditors.PanelControl panelControl2;
+        private DevExpress.XtraEditors.CheckEdit ckFlashRed;
+        private DevExpress.XtraEditors.CheckEdit ckFlashGreen;
+        private DevExpress.XtraBars.BarButtonItem bbiFlashGreen;
+        private DevExpress.XtraBars.BarButtonItem bbiFlashRed;
     }
 }

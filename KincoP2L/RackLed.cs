@@ -41,6 +41,17 @@ namespace KincoP2L
             set;
         }
 
+        private bool selected;
+        public bool Selected
+        {
+            get { return this.selected; }
+            set
+            {
+                this.selected = value;
+                this.ImageIndex = 1;
+            }
+        }
+
         public new event EventHandler Click;
 
         public event EventHandler<CommandEventArg> CommandSended
@@ -110,7 +121,22 @@ namespace KincoP2L
             this.ImageIndex = 2;
         }
 
-       
+        public void DoSelected()
+        {
+            this.ImageIndex = 3;
+        }
+
+        public void FlashGreen(ushort lightsOnTime, ushort lightsOffTime, ushort flashCount)
+        {
+            this.boss.FlashGreenLed(lightsOffTime, lightsOffTime, flashCount, new KeyValuePair<ushort, ushort>(this.RackAddress, this.Address));
+            this.ImageIndex = 4;
+        }
+
+        public void FlashRed(ushort lightsOnTime, ushort lightsOffTime, ushort flashCount)
+        {
+            this.boss.FlashRedLed(lightsOffTime, lightsOffTime, flashCount, new KeyValuePair<ushort, ushort>(this.RackAddress, this.Address));
+            this.ImageIndex = 5;
+        }
 
     }
 }
