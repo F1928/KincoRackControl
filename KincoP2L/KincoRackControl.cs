@@ -16,7 +16,12 @@ namespace KincoP2L
     {
         StringBuilder messageLogs = new StringBuilder();
         RackLed tempLed;
-        List<DevExpress.XtraEditors.CheckEdit> ckEditList = new List<DevExpress.XtraEditors.CheckEdit>();
+        List<DevExpress.XtraEditors.CheckEdit> ckEditListForMultiRackControl = new List<DevExpress.XtraEditors.CheckEdit>();
+        List<DevExpress.XtraEditors.CheckEdit> ckEditListForMultiLightsControl = new List<DevExpress.XtraEditors.CheckEdit>();
+        List<DevExpress.XtraEditors.CheckEdit> ckEditListForFlashControl = new List<DevExpress.XtraEditors.CheckEdit>();
+
+        List<KeyValuePair<ushort, ushort>> listForMultiLightsControl = new List<KeyValuePair<ushort, ushort>>();
+        List<KeyValuePair<ushort, ushort>> listForFlashControl = new List<KeyValuePair<ushort, ushort>>();
 
         public KincoRackControl()
         {
@@ -27,6 +32,11 @@ namespace KincoP2L
 
         private void Clear()
         {
+            this.mmSelectedLightsForFlash.Text = string.Empty;
+            this.mmSelectedLightsForMulti.Text = string.Empty;
+            this.listForMultiLightsControl.Clear();
+            this.listForFlashControl.Clear();
+
             this.rackDataSet.Clear();
             this.rackDataSet.IMS_RACK.Merge(LocatorManager.GetRackInfoTable());
             foreach (var x in this.rackDataSet.IMS_RACK)
@@ -37,21 +47,30 @@ namespace KincoP2L
             }
             this.bindingSource.Position = -1;
 
-            this.ckEditList.Clear();
-            this.ckEditList.Add(this.ckMutiRackControl0);
-            this.ckEditList.Add(this.ckMutiRackControl1);
-            this.ckEditList.Add(this.ckMutiRackControl2);
-            this.ckEditList.Add(this.ckMutiRackControl3);
-            this.ckEditList.Add(this.ckMutiRackControl4);
-            this.ckEditList.Add(this.ckMutiRackControl5);
-            this.ckEditList.Add(this.ckMutiRackControl6);
-            this.ckMutiRackControl0.Checked = false;
-            this.ckMutiRackControl1.Checked = false;
-            this.ckMutiRackControl2.Checked = false;
-            this.ckMutiRackControl3.Checked = false;
-            this.ckMutiRackControl4.Checked = false;
-            this.ckMutiRackControl5.Checked = false;
-            this.ckMutiRackControl6.Checked = false;
+            this.ckEditListForMultiRackControl.Clear();
+            this.ckEditListForMultiRackControl.Add(this.ckMutiRackControl0);
+            this.ckEditListForMultiRackControl.Add(this.ckMutiRackControl1);
+            this.ckEditListForMultiRackControl.Add(this.ckMutiRackControl2);
+            this.ckEditListForMultiRackControl.Add(this.ckMutiRackControl3);
+            this.ckEditListForMultiRackControl.Add(this.ckMutiRackControl4);
+            this.ckEditListForMultiRackControl.Add(this.ckMutiRackControl5);
+            this.ckEditListForMultiRackControl.Add(this.ckMutiRackControl6);
+            foreach (var ck in this.ckEditListForMultiRackControl)
+                ck.Checked = false;
+
+            this.ckEditListForMultiLightsControl.Clear();
+            this.ckEditListForMultiLightsControl.Add(this.ckCloseLight);
+            this.ckEditListForMultiLightsControl.Add(this.ckGreenLightOn);
+            this.ckEditListForMultiLightsControl.Add(this.ckRedLinghtOn);
+            foreach (var ck in this.ckEditListForMultiLightsControl)
+                ck.Checked = false;
+
+            this.ckEditListForFlashControl.Clear();
+            this.ckEditListForFlashControl.Add(this.ckFlashGreen);
+            this.ckEditListForFlashControl.Add(this.ckFlashRed);
+            foreach (var ck in this.ckEditListForFlashControl)
+                ck.Checked = false;
+
         }
 
         private void Init()
@@ -75,21 +94,22 @@ namespace KincoP2L
                 this.tableLayoutPanelBack.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 34));
             }
 
-            this.ckMutiRackControl0.CheckStateChanged -= new EventHandler(ckMutiRackControl_CheckStateChanged);
-            this.ckMutiRackControl1.CheckStateChanged -= new EventHandler(ckMutiRackControl_CheckStateChanged);
-            this.ckMutiRackControl2.CheckStateChanged -= new EventHandler(ckMutiRackControl_CheckStateChanged);
-            this.ckMutiRackControl3.CheckStateChanged -= new EventHandler(ckMutiRackControl_CheckStateChanged);
-            this.ckMutiRackControl4.CheckStateChanged -= new EventHandler(ckMutiRackControl_CheckStateChanged);
-            this.ckMutiRackControl5.CheckStateChanged -= new EventHandler(ckMutiRackControl_CheckStateChanged);
-            this.ckMutiRackControl6.CheckStateChanged -= new EventHandler(ckMutiRackControl_CheckStateChanged);
+            foreach (var ck in this.ckEditListForMultiRackControl)
+            {
+                ck.CheckStateChanged -= new EventHandler(ckMutiRackControl_CheckStateChanged);
+                ck.CheckStateChanged += new EventHandler(ckMutiRackControl_CheckStateChanged);
+            }
+            foreach (var ck in this.ckEditListForMultiLightsControl)
+            {
+                ck.CheckStateChanged -= new EventHandler(ckMutiLightsControl_CheckStateChanged);
+                ck.CheckStateChanged += new EventHandler(ckMutiLightsControl_CheckStateChanged);
+            }
+            foreach (var ck in this.ckEditListForFlashControl)
+            {
+                ck.CheckStateChanged -= new EventHandler(ckFlashLightsControl_CheckStateChanged);
+                ck.CheckStateChanged += new EventHandler(ckFlashLightsControl_CheckStateChanged);
+            }
 
-            this.ckMutiRackControl0.CheckStateChanged += new EventHandler(ckMutiRackControl_CheckStateChanged);
-            this.ckMutiRackControl1.CheckStateChanged += new EventHandler(ckMutiRackControl_CheckStateChanged);
-            this.ckMutiRackControl2.CheckStateChanged += new EventHandler(ckMutiRackControl_CheckStateChanged);
-            this.ckMutiRackControl3.CheckStateChanged += new EventHandler(ckMutiRackControl_CheckStateChanged);
-            this.ckMutiRackControl4.CheckStateChanged += new EventHandler(ckMutiRackControl_CheckStateChanged);
-            this.ckMutiRackControl5.CheckStateChanged += new EventHandler(ckMutiRackControl_CheckStateChanged);
-            this.ckMutiRackControl6.CheckStateChanged += new EventHandler(ckMutiRackControl_CheckStateChanged);
 
             this.rackDataSet.IMS_RACK.ColumnChanged -= new DataColumnChangeEventHandler(IMS_RACK_ColumnChanged);
             this.rackDataSet.IMS_RACK.ColumnChanged += new DataColumnChangeEventHandler(IMS_RACK_ColumnChanged);
@@ -118,7 +138,25 @@ namespace KincoP2L
             DevExpress.XtraEditors.CheckEdit ckedit = sender as DevExpress.XtraEditors.CheckEdit;
             if (ckedit.Checked)
             {
-                this.ckEditList.ForEach(f => { if (f.Name != ckedit.Name) f.Checked = false; });
+                this.ckEditListForMultiRackControl.ForEach(f => { if (f.Name != ckedit.Name) f.Checked = false; });
+            }
+        }
+
+        void ckMutiLightsControl_CheckStateChanged(object sender, EventArgs e)
+        {
+            DevExpress.XtraEditors.CheckEdit ckedit = sender as DevExpress.XtraEditors.CheckEdit;
+            if (ckedit.Checked)
+            {
+                this.ckEditListForMultiLightsControl.ForEach(f => { if (f.Name != ckedit.Name) f.Checked = false; });
+            }
+        }
+
+        void ckFlashLightsControl_CheckStateChanged(object sender, EventArgs e)
+        {
+            DevExpress.XtraEditors.CheckEdit ckedit = sender as DevExpress.XtraEditors.CheckEdit;
+            if (ckedit.Checked)
+            {
+                this.ckEditListForFlashControl.ForEach(f => { if (f.Name != ckedit.Name) f.Checked = false; });
             }
         }
 
@@ -169,7 +207,7 @@ namespace KincoP2L
                             led.Address = (ushort)c.ADDRESS;
                             led.RackAddress = (ushort)c.RACK_ADDRESS;
                             led.ImageIndex = 0;
-                            led.ImageList = this.imageCollection;
+                            led.ImageList = this.imageCollectionOfMenu;
                             led.Hint = c.CODE;
                             led.Click += new EventHandler(led_Click);
                             led.CommandSended += new EventHandler<CommandEventArg>(led_CommandSended);
@@ -236,6 +274,62 @@ namespace KincoP2L
             tempLed.TurnOnRedLed();
         }
 
+        private void bbiSelect_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+            this.DoSelected();
+        }
+
+        private void bbiFlashGreen_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            LedFlashParamPicker frm = new LedFlashParamPicker();
+            DialogResult result = frm.ShowDialog(this);
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                tempLed.FlashGreen(frm.OnTime, frm.OffTime, frm.FlashCount);
+            }
+           
+        }
+
+        private void bbiFlashRed_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            LedFlashParamPicker frm = new LedFlashParamPicker();
+            DialogResult result = frm.ShowDialog(this);
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                tempLed.FlashRed(frm.OnTime, frm.OffTime, frm.FlashCount);
+            }
+        }
+
+
+        private void DoSelected()
+        {
+            tempLed.DoSelected();
+
+            if (this.tabControl.SelectedTabPage == pageMutiLightControl)
+            {
+                this.listForMultiLightsControl.Add(new KeyValuePair<ushort, ushort>(tempLed.RackAddress, tempLed.Address));
+                StringBuilder sb = new StringBuilder();
+                foreach (var addr in this.listForMultiLightsControl)
+                {
+                    sb.AppendFormat(" [{0},{1}] ", addr.Key, addr.Value);
+                }
+                this.mmSelectedLightsForMulti.Text = sb.ToString();
+            }
+
+            else if (this.tabControl.SelectedTabPage == pageLightFlashControl)
+            {
+                this.listForFlashControl.Add(new KeyValuePair<ushort, ushort>(tempLed.RackAddress, tempLed.Address));
+                StringBuilder sb = new StringBuilder();
+                foreach (var addr in this.listForFlashControl)
+                {
+                    sb.AppendFormat(" [{0},{1}] ", addr.Key, addr.Value);
+                }
+                this.mmSelectedLightsForFlash.Text = sb.ToString();
+            }
+        }
+
+
         private void SendMutiRackControlCmd()
         {
             var list = this.rackDataSet.IMS_RACK.Where(f => f.CHECKED);
@@ -246,7 +340,7 @@ namespace KincoP2L
                 return;
             }
             bool cked=false;
-            this.ckEditList.ForEach(f =>
+            this.ckEditListForMultiRackControl.ForEach(f =>
             {
                 if (f.Checked) cked = true;
             });
@@ -293,6 +387,68 @@ namespace KincoP2L
 
         }
 
+        private void SendMutiLightsControlCmd() 
+        {
+            if (this.listForMultiLightsControl.Count <= 0)
+            {
+                Messenger.ShowException("請選擇您要控制的燈!");
+                return;
+            }
+
+            if (this.ckCloseLight.Checked == false &&
+                this.ckGreenLightOn.Checked == false &&
+                this.ckRedLinghtOn.Checked == false)
+            {
+                Messenger.ShowException("請選擇您要發送的命令類型!");
+                return;
+            }
+
+            if (this.listForMultiLightsControl.Count > 0)
+            {
+                KincoLightManager.Boss cmdBoss = new Boss();
+                cmdBoss.AfterCommandSend += (o, e) => { this.LogMessage(e); };
+                LedOnOffStatus toStatus = LedOnOffStatus.Off;
+                if (this.ckCloseLight.Checked)
+                    toStatus = LedOnOffStatus.Off;
+                else if (this.ckGreenLightOn.Checked)
+                    toStatus = LedOnOffStatus.GreenOn;
+                else if (this.ckRedLinghtOn.Checked)
+                    toStatus = LedOnOffStatus.RedOn;
+                cmdBoss.SendLedOnOffControlCmd(toStatus, this.listForMultiLightsControl.ToArray());
+            }
+        }
+
+        private void SendFlashControlCmd()
+        {
+            if (this.listForFlashControl.Count <= 0)
+            {
+                Messenger.ShowException("請選擇您要閃爍的燈!");
+                return;
+            }
+
+            if (this.ckFlashGreen.Checked == false &&
+                this.ckFlashRed.Checked == false)
+            {
+                Messenger.ShowException("請選擇您要發送的命令類型!");
+                return;
+            }
+            KincoLightManager.Boss cmdBoss = new Boss();
+            cmdBoss.AfterCommandSend += (o, e) => { this.LogMessage(e); };
+            LedFlashStatus toStatus = LedFlashStatus.Green_Flash;
+            if (this.ckFlashGreen.Checked)
+                toStatus = LedFlashStatus.Green_Flash;
+            else
+                toStatus = LedFlashStatus.Red_Flash;
+
+            LedFlashParamPicker frm = new LedFlashParamPicker();
+            DialogResult result = frm.ShowDialog(this);
+            if (result == System.Windows.Forms.DialogResult.OK)
+            {
+                cmdBoss.SendLedFlashControlCmd(toStatus, frm.OnTime, frm.OffTime, frm.FlashCount, this.listForFlashControl.ToArray());
+            }
+        }
+
+
         private void btCreateRactCells_Click(object sender, EventArgs e)
         {
             ReadyForGenRack();
@@ -305,7 +461,33 @@ namespace KincoP2L
             {
                 this.SendMutiRackControlCmd();
             }
+            if (tabControl.SelectedTabPage == pageMutiLightControl)
+            {
+                this.SendMutiLightsControlCmd();
+            }
+            if (tabControl.SelectedTabPage == pageLightFlashControl)
+            {
+                this.SendFlashControlCmd();
+            }
         }
+
+        private void tabControl_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
+        {
+            if (e.Page == pageMutiRackControl)
+                this.bbiSelect.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
+            else
+                this.bbiSelect.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;
+        }
+
+        private void btClear_Click(object sender, EventArgs e)
+        {
+            this.Clear();
+        }
+
+      
+       
+
+        
 
        
         
