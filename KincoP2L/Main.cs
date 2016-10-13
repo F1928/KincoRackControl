@@ -22,7 +22,7 @@ namespace KincoP2L
         {
             foreach (Form existsChildForm in this.MdiChildren)
             {
-                if (existsChildForm.Name == nbRegRack.Caption)
+                if (existsChildForm.Name == navBarItem.Caption)
                 {
                     this.ActivateMdiChild(existsChildForm);
                     existsChildForm.Activate();
