@@ -1,4 +1,4 @@
-﻿namespace KincoP2L
+﻿namespace P2L
 {
     partial class RackLed
     {

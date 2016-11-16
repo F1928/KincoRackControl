@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KincoP2L", "KincoP2L\KincoP2L.csproj", "{2508DD6B-FC1A-4725-9E66-0687543C2995}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "P2L", "KincoP2L\P2L.csproj", "{2508DD6B-FC1A-4725-9E66-0687543C2995}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "KincoLightManager", "KincoLightManager\KincoLightManager.csproj", "{26BF2B68-6AB2-457A-A6DF-EEB16F169D80}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SMTNLightManager", "SMTNLightManager\SMTNLightManager.csproj", "{952BDA27-476E-4A03-B64F-AACACECC6671}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,6 +46,18 @@ Global
 		{26BF2B68-6AB2-457A-A6DF-EEB16F169D80}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{26BF2B68-6AB2-457A-A6DF-EEB16F169D80}.Release|x64.ActiveCfg = Release|Any CPU
 		{26BF2B68-6AB2-457A-A6DF-EEB16F169D80}.Release|x86.ActiveCfg = Release|Any CPU
+		{952BDA27-476E-4A03-B64F-AACACECC6671}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{952BDA27-476E-4A03-B64F-AACACECC6671}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{952BDA27-476E-4A03-B64F-AACACECC6671}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{952BDA27-476E-4A03-B64F-AACACECC6671}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{952BDA27-476E-4A03-B64F-AACACECC6671}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{952BDA27-476E-4A03-B64F-AACACECC6671}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{952BDA27-476E-4A03-B64F-AACACECC6671}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{952BDA27-476E-4A03-B64F-AACACECC6671}.Release|Any CPU.Build.0 = Release|Any CPU
+		{952BDA27-476E-4A03-B64F-AACACECC6671}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{952BDA27-476E-4A03-B64F-AACACECC6671}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{952BDA27-476E-4A03-B64F-AACACECC6671}.Release|x64.ActiveCfg = Release|Any CPU
+		{952BDA27-476E-4A03-B64F-AACACECC6671}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

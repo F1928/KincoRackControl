@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
 
-namespace KincoP2L
+namespace P2L
 {
     public static class Messenger
     {

@@ -9,11 +9,12 @@ using System.Windows.Forms;
 using System.Threading.Tasks;
 using KincoLightManager;
 
-namespace KincoP2L
+namespace P2L
 {
     [Function]
     public partial class KincoRackControl : DevExpress.XtraEditors.XtraForm
     {
+        private Boss cmd_boss = new Boss();
         StringBuilder messageLogs = new StringBuilder();
         RackLed tempLed;
         List<DevExpress.XtraEditors.CheckEdit> ckEditListForMultiRackControl = new List<DevExpress.XtraEditors.CheckEdit>();
@@ -38,7 +39,7 @@ namespace KincoP2L
             this.listForFlashControl.Clear();
 
             this.rackDataSet.Clear();
-            this.rackDataSet.IMS_RACK.Merge(LocatorManager.GetRackInfoTable());
+            this.rackDataSet.IMS_RACK.Merge(LocatorManager.GetRackInfoTable("KINCO"));
             foreach (var x in this.rackDataSet.IMS_RACK)
             {
                 x.CHECKED = false;
@@ -46,6 +47,9 @@ namespace KincoP2L
                 x.CHECKED_FRONT = false;
             }
             this.bindingSource.Position = -1;
+
+            this.cmd_boss.AfterCommandSend -= this.led_CommandSended;
+            this.cmd_boss.AfterCommandSend += this.led_CommandSended;
 
             this.ckEditListForMultiRackControl.Clear();
             this.ckEditListForMultiRackControl.Add(this.ckMutiRackControl0);
@@ -204,13 +208,13 @@ namespace KincoP2L
                         foreach (var c in q)
                         {
                             RackLed led = new RackLed();
+                            led.LocatorCode = c.CODE;
                             led.Address = (ushort)c.ADDRESS;
                             led.RackAddress = (ushort)c.RACK_ADDRESS;
                             led.ImageIndex = 0;
                             led.ImageList = this.imageCollectionOfMenu;
                             led.Hint = c.CODE;
                             led.Click += new EventHandler(led_Click);
-                            led.CommandSended += new EventHandler<CommandEventArg>(led_CommandSended);
                             if (isFrontSide)
                                 this.tableLayoutPanelFront.Controls.Add(led, (int)c.COL_NUM-1, (int)c.ROW_NUM-1);
                             else
@@ -261,17 +265,20 @@ namespace KincoP2L
 
         private void bbiTurnOffLED_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            tempLed.TurnOffLed();
+            this.cmd_boss.TurnOffLed(new KeyValuePair<ushort, ushort>(tempLed.RackAddress, tempLed.Address));
+            tempLed.ImageIndex = 0;  
         }
 
         private void bbiTurnOnGreenLED_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            tempLed.TurnOnGreenLed();
+            this.cmd_boss.TurnOnGreenLed(new KeyValuePair<ushort, ushort>(tempLed.RackAddress, tempLed.Address));
+            tempLed.ImageIndex = 1;
         }
 
         private void bbiTurnOnRedLED_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            tempLed.TurnOnRedLed();
+            this.cmd_boss.TurnOnRedLed(new KeyValuePair<ushort, ushort>(tempLed.RackAddress, tempLed.Address));
+            tempLed.ImageIndex = 2;
         }
 
         private void bbiSelect_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
@@ -286,7 +293,8 @@ namespace KincoP2L
             DialogResult result = frm.ShowDialog(this);
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                tempLed.FlashGreen(frm.OnTime, frm.OffTime, frm.FlashCount);
+                this.cmd_boss.FlashGreenLed(frm.OnTime, frm.OffTime, frm.FlashCount, new KeyValuePair<ushort, ushort>(tempLed.RackAddress, tempLed.Address));
+                tempLed.ImageIndex = 4;
             }
            
         }
@@ -297,7 +305,8 @@ namespace KincoP2L
             DialogResult result = frm.ShowDialog(this);
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                tempLed.FlashRed(frm.OnTime, frm.OffTime, frm.FlashCount);
+                this.cmd_boss.FlashRedLed(frm.OnTime, frm.OffTime, frm.FlashCount, new KeyValuePair<ushort, ushort>(tempLed.RackAddress, tempLed.Address));
+                tempLed.ImageIndex = 5;
             }
         }
 

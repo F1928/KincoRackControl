@@ -1,4 +1,4 @@
-﻿namespace KincoP2L
+﻿namespace P2L
 {
     partial class Main
     {
@@ -77,17 +77,17 @@
             // 
             this.nbRegRack.CanDrag = false;
             this.nbRegRack.Caption = "註冊貨架儲位";
-            this.nbRegRack.LargeImage = global::KincoP2L.Properties.Resources.settings;
+            this.nbRegRack.LargeImage = global::P2L.Properties.Resources.settings;
             this.nbRegRack.Name = "nbRegRack";
-            this.nbRegRack.SmallImage = global::KincoP2L.Properties.Resources.settings;
+            this.nbRegRack.SmallImage = global::P2L.Properties.Resources.settings;
             this.nbRegRack.Tag = "RegisterKincoRack";
             // 
             // nbRackLEDControl
             // 
             this.nbRackLEDControl.Caption = "貨架燈控中心";
-            this.nbRackLEDControl.LargeImage = global::KincoP2L.Properties.Resources._switch;
+            this.nbRackLEDControl.LargeImage = global::P2L.Properties.Resources._switch;
             this.nbRackLEDControl.Name = "nbRackLEDControl";
-            this.nbRackLEDControl.SmallImage = global::KincoP2L.Properties.Resources._switch;
+            this.nbRackLEDControl.SmallImage = global::P2L.Properties.Resources._switch;
             this.nbRackLEDControl.Tag = "KincoRackControl";
             // 
             // xtraTabbedMdiManager
