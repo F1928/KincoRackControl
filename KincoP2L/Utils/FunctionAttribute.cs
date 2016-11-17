@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace KincoP2L
+namespace P2L
 {
     public class FunctionAttribute:Attribute
     {

@@ -10,7 +10,7 @@ using DevExpress.XtraEditors;
 using DevExpress.Utils;
 using KincoLightManager;
 
-namespace KincoP2L
+namespace P2L
 {
     
     public partial class RackLed : XtraUserControl
@@ -35,6 +35,12 @@ namespace KincoP2L
             }
         }
 
+        public string LocatorCode
+        {
+            get;
+            set;
+        }
+
         public UInt16 RackAddress
         {
             get;
@@ -54,17 +60,7 @@ namespace KincoP2L
 
         public new event EventHandler Click;
 
-        public event EventHandler<CommandEventArg> CommandSended
-        {
-            add
-            {
-                this.boss.AfterCommandSend += value;
-            }
-            remove
-            {
-                this.boss.AfterCommandSend -= value;
-            }
-        }
+ 
         
 
         public object ImageList
@@ -97,10 +93,31 @@ namespace KincoP2L
             }
         }
 
+
+        public void DoSelected()
+        {
+            this.ImageIndex = 3;
+        }
+
+
         private void btLedCommand_Click(object sender, EventArgs e)
         {
             if (this.Click != null)
                 this.Click(this, e);
+        }
+
+
+        /*
+        public event EventHandler<CommandEventArg> CommandSended
+        {
+            add
+            {
+                this.boss.AfterCommandSend += value;
+            }
+            remove
+            {
+                this.boss.AfterCommandSend -= value;
+            }
         }
 
         public void TurnOffLed()
@@ -119,12 +136,7 @@ namespace KincoP2L
         {
             this.boss.TurnOnRedLed(new KeyValuePair<ushort, ushort>(this.RackAddress, this.Address));
             this.ImageIndex = 2;
-        }
-
-        public void DoSelected()
-        {
-            this.ImageIndex = 3;
-        }
+        }        
 
         public void FlashGreen(ushort lightsOnTime, ushort lightsOffTime, ushort flashCount)
         {
@@ -137,6 +149,7 @@ namespace KincoP2L
             this.boss.FlashRedLed(lightsOffTime, lightsOffTime, flashCount, new KeyValuePair<ushort, ushort>(this.RackAddress, this.Address));
             this.ImageIndex = 5;
         }
+         */
 
     }
 }

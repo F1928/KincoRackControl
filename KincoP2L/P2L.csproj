@@ -8,8 +8,8 @@
     <ProjectGuid>{2508DD6B-FC1A-4725-9E66-0687543C2995}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>KincoP2L</RootNamespace>
-    <AssemblyName>KincoP2L</AssemblyName>
+    <RootNamespace>P2L</RootNamespace>
+    <AssemblyName>P2L</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
@@ -91,6 +91,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="SMTNRackControl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SMTNRackControl.Designer.cs">
+      <DependentUpon>SMTNRackControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegisterSMTNRack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterSMTNRack.Designer.cs">
+      <DependentUpon>RegisterSMTNRack.cs</DependentUpon>
+    </Compile>
     <Compile Include="LedFlashParamPicker.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -131,6 +143,12 @@
       <DependentUpon>RegisterKincoRack.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Messenger.cs" />
+    <EmbeddedResource Include="SMTNRackControl.resx">
+      <DependentUpon>SMTNRackControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegisterSMTNRack.resx">
+      <DependentUpon>RegisterSMTNRack.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="KincoRackControl.resx">
       <DependentUpon>KincoRackControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -172,6 +190,10 @@
     <ProjectReference Include="..\KincoLightManager\KincoLightManager.csproj">
       <Project>{26BF2B68-6AB2-457A-A6DF-EEB16F169D80}</Project>
       <Name>KincoLightManager</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SMTNLightManager\SMTNLightManager.csproj">
+      <Project>{952BDA27-476E-4A03-B64F-AACACECC6671}</Project>
+      <Name>SMTNLightManager</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

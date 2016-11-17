@@ -5,13 +5,24 @@ using System.Text;
 using EZ.DB;
 using System.Data;
 
-namespace KincoP2L
+namespace P2L
 {
     public static class LocatorManager
     {
         public static decimal NewID()
         {
           return  DBAccessor.FromDefaultDb().ExecuteScalar<decimal>("SELECT SEQ_ID.NEXTVAL FROM DUAL ");
+        }
+
+        public static decimal GetRackCount(string rackVendor)
+        {
+            string cmd = @"SELECT COUNT('*')   FROM (SELECT DISTINCT RACK_LOCATOR_ID
+FROM IMS_INTELLIGENT_RACK_CELL_INFO
+WHERE RACK_VENDOR = :RACK_VENDOR ) V";
+
+            return DBAccessor.FromDefaultDb().ExecuteScalarByKeyValuePairs<decimal>(
+                cmd,
+                new KeyValuePair<string, object>("RACK_VENDOR", rackVendor));
         }
 
         public static decimal GetLocatorID(string locatorCode)
@@ -30,13 +41,15 @@ namespace KincoP2L
             return tb.FirstOrDefault();
         }
 
-        public static bool RackAddressExists(decimal rackAddress)
+        public static bool RackAddressExists(string rackVendor,decimal rackAddress)
         {
             string cmd = @" SELECT COUNT('*')
     FROM IMS_INTELLIGENT_RACK_CELL_INFO  A
-    WHERE A.RACK_ADDRESS IN (:ADDRESS, :ADDRESS+1)";
+    WHERE RACK_VENDOR = :RACK_VENDOR
+      AND A.RACK_ADDRESS IN (:ADDRESS, :ADDRESS+1)";
             decimal count = DBAccessor.FromDefaultDb().ExecuteScalarByKeyValuePairs<decimal>(
                  cmd,
+                 new KeyValuePair<string, object>("RACK_VENDOR", rackVendor),
                  new KeyValuePair<string, object>("ADDRESS", rackAddress));
             if (count > 0) 
                 return true; 
@@ -44,13 +57,14 @@ namespace KincoP2L
                 return false;
         }
 
-        public static decimal SuggestRackAddress()
+        public static decimal SuggestRackAddress(string rackVendor)
         {
             string cmd = @"SELECT NVL(RACK_ADDRESS,1)
   FROM (
 SELECT MAX (A.RACK_ADDRESS) + 1 RACK_ADDRESS
-  FROM IMS_INTELLIGENT_RACK_CELL_INFO A )";
-            decimal address = DBAccessor.FromDefaultDb().ExecuteScalar<decimal>(cmd);
+  FROM IMS_INTELLIGENT_RACK_CELL_INFO A
+ WHERE RACK_VENDOR = :RACK_VENDOR )";
+            decimal address = DBAccessor.FromDefaultDb().ExecuteScalarByKeyValuePairs<decimal>(cmd, new KeyValuePair<string, object>("RACK_VENDOR", rackVendor));
             if (address % 2 == 0)
                 return address + 1;
             else
@@ -70,7 +84,7 @@ SELECT MAX (A.RACK_ADDRESS) + 1 RACK_ADDRESS
             DBAccessor.FromDefaultDb().UpdateDataTable(table, table.TableName);
         }
 
-        public static RackDataSet.IMS_RACKDataTable GetRackInfoTable()
+        public static RackDataSet.IMS_RACKDataTable GetRackInfoTable(string rackVendor)
         {
             string cmd = @"SELECT V.CODE,
        (SELECT MIN (C1.RACK_ADDRESS)
@@ -83,9 +97,10 @@ SELECT MAX (A.RACK_ADDRESS) + 1 RACK_ADDRESS
           BACK_ADDRESS
   FROM (SELECT DISTINCT C.RACK_LOCATOR_ID AS ID, L.CODE
           FROM IMS_INTELLIGENT_RACK_CELL_INFO C, IMS_LOCATOR L
-         WHERE L.ID = C.RACK_LOCATOR_ID) V";
+         WHERE L.ID = C.RACK_LOCATOR_ID
+           AND C.RACK_VENDOR =:RACK_VENDOR ) V";
             RackDataSet.IMS_RACKDataTable tb = new RackDataSet.IMS_RACKDataTable();
-            tb.Merge(DBAccessor.FromDefaultDb().GetDataTable(cmd));
+            tb.Merge(DBAccessor.FromDefaultDb().GetDataTableByKeyValuePairs(cmd,new KeyValuePair<string,object>("RACK_VENDOR",rackVendor)));
             foreach (var x in tb)
             {
                 x.CHECKED = false;

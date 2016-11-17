@@ -7,11 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace KincoP2L
+namespace P2L
 {
     [Function]
     public partial class RegisterKincoRack : DevExpress.XtraEditors.XtraForm
     {
+        string RackVendor = "KINCO";
         public RegisterKincoRack()
         {
             InitializeComponent();
@@ -19,16 +20,23 @@ namespace KincoP2L
             this.Clear();
         }
 
+        private decimal getSuggestAddress()
+        {
+            return LocatorManager.SuggestRackAddress(RackVendor);
+        }
+
         private void Clear()
         {
             this.rackDataSet.Clear();
-            this.txtRackCellCodePrefix.Text = string.Empty;
+            this.txtRackCellCodePrefix.Text = RackVendor;
             this.txtRackParentLocatorCode.Text = string.Empty;
-            this.txtRackLocatorCode.Text = string.Empty;
-            decimal suggestAddress = LocatorManager.SuggestRackAddress();
+            decimal count = LocatorManager.GetRackCount(RackVendor);
+            this.txtRackLocatorCode.Text = string.Format("{0}-{1}", this.RackVendor, (count + 1).ToString().PadLeft(3, '0'));
+            decimal suggestAddress = getSuggestAddress();
 
-            this.ckBackSide.Checked = false;
-            this.ckFrontSide.Checked = false;
+
+            this.ckBackSide.Checked = true;
+            this.ckFrontSide.Checked = true;
             
             this.nRackAddress.Value = suggestAddress;
             this.btCreate.Enabled = true;
@@ -60,12 +68,12 @@ namespace KincoP2L
                     return;
                 }
 
-                if (string.IsNullOrEmpty(txtRackCellCodePrefix.Text.Trim()))
-                {
-                    MessageBox.Show(this, "請確定貨位編碼前綴!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    this.txtRackCellCodePrefix.Focus();
-                    return;
-                }
+                //if (string.IsNullOrEmpty(txtRackCellCodePrefix.Text.Trim()))
+                //{
+                //    MessageBox.Show(this, "請確定貨位編碼前綴!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //    this.txtRackCellCodePrefix.Focus();
+                //    return;
+                //}
 
                 if (string.IsNullOrEmpty(txtRackParentLocatorCode.Text.Trim()))
                 {
@@ -78,13 +86,13 @@ namespace KincoP2L
                 if (ckBackSide.Checked)
                     tmp = tmp + 1;
 
-                bool rackAddressExists = LocatorManager.RackAddressExists(tmp);
+                bool rackAddressExists = LocatorManager.RackAddressExists(RackVendor, tmp);
                 if (rackAddressExists)
                 {
 
                     MessageBox.Show(this, "貨架地址編碼重覆了，請另設一個!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
-                    decimal suggestAddress = LocatorManager.SuggestRackAddress();
+                    decimal suggestAddress = getSuggestAddress();
                     DialogResult result = MessageBox.Show(this, string.Format("系統建議你將貨架地址設置為:{0},是否採納?", suggestAddress), "確認", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
                     if (result == System.Windows.Forms.DialogResult.Yes)
                     {
@@ -109,7 +117,7 @@ namespace KincoP2L
                     newRow.SetDISABLE_BILL_IDNull();
                     newRow.CODE = txtRackLocatorCode.Text.Trim();
                     newRow.NAME = txtRackLocatorCode.Text.Trim();
-                    newRow.DESCRIPTION = "Intelligent Rack";
+                    newRow.DESCRIPTION = this.RackVendor + " Intelligent Rack";
                     newRow.TYPE = 20; // 撿料區域
                     newRow.PARENT_ID = parentLocatorID;
                     rackDataSet.IMS_LOCATOR.AddIMS_LOCATORRow(newRow);
@@ -142,14 +150,15 @@ namespace KincoP2L
             this.btSave.Enabled = true;
             decimal rackCellAddress = 0;
             string rackCellLocatorCode = string.Empty;
+            int rackAddressLeght = (int)(nRackAddressLength.Value);
+            int cellAddressLength = (int)(nCellCodeLeght.Value);
             for (decimal l = levelStart; l <= levelEnd; l++)
                 for (decimal c = colStart; c <= colEnd; c++)
                 {
                     rackCellLocatorCode = this.txtRackCellCodePrefix.Text;
                     rackCellAddress += 1;
-                    // rackCellLocatorCode = rackCellLocatorCode + rackAddress.ToString().PadLeft(3, '0') + l.ToString().PadLeft(2, '0') + c.ToString().PadLeft(3, '0');
-                    rackCellLocatorCode = rackCellLocatorCode + rackAddress.ToString().PadLeft(3, '0') + rackCellAddress.ToString().PadLeft(4, '0');
 
+                    rackCellLocatorCode = rackCellLocatorCode + rackAddress.ToString().PadLeft(rackAddressLeght, '0') + rackCellAddress.ToString().PadLeft(cellAddressLength, '0');
                     RackDataSet.IMS_LOCATORRow newLoc = this.rackDataSet.IMS_LOCATOR.NewIMS_LOCATORRow();
                     newLoc.ID = LocatorManager.NewID();
                     newLoc.VERSION = 1;
@@ -174,6 +183,7 @@ namespace KincoP2L
                     newRow.COL_NUM = c;
                     newRow.RACK_LOCATOR_ID = rackLocatorID;
                     newRow.RACK_ADDRESS = rackAddress;
+                    newRow.RACK_VENDOR = this.RackVendor;
                     this.rackDataSet.IMS_INTELLIGENT_RACK_CELL_INFO.AddIMS_INTELLIGENT_RACK_CELL_INFORow(newRow);
 
                 }

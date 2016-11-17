@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace KincoP2L
+namespace P2L
 {
     public partial class LedFlashParamPicker : DevExpress.XtraEditors.XtraForm
     {

@@ -1,4 +1,4 @@
-﻿namespace KincoP2L
+﻿namespace P2L
 {
     partial class RegisterKincoRack
     {
@@ -30,11 +30,13 @@
         {
             this.components = new System.ComponentModel.Container();
             this.layoutControl1 = new DevExpress.XtraLayout.LayoutControl();
+            this.nCellCodeLeght = new DevExpress.XtraEditors.SpinEdit();
+            this.nRackAddressLength = new DevExpress.XtraEditors.SpinEdit();
             this.ckBackSide = new DevExpress.XtraEditors.CheckEdit();
             this.ckFrontSide = new DevExpress.XtraEditors.CheckEdit();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.rackDataSet = new KincoP2L.RackDataSet();
+            this.rackDataSet = new P2L.RackDataSet();
             this.gridView1 = new DevExpress.XtraGrid.Views.Grid.GridView();
             this.colID = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colVERSION = new DevExpress.XtraGrid.Columns.GridColumn();
@@ -71,6 +73,7 @@
             this.layoutControlItem1 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem2 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem14 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlGroup3 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
@@ -79,8 +82,11 @@
             this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem9 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem13 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem15 = new DevExpress.XtraLayout.LayoutControlItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nCellCodeLeght.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nRackAddressLength.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckBackSide.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckFrontSide.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -104,6 +110,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
@@ -112,10 +119,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).BeginInit();
             this.SuspendLayout();
             // 
             // layoutControl1
             // 
+            this.layoutControl1.Controls.Add(this.nCellCodeLeght);
+            this.layoutControl1.Controls.Add(this.nRackAddressLength);
             this.layoutControl1.Controls.Add(this.ckBackSide);
             this.layoutControl1.Controls.Add(this.ckFrontSide);
             this.layoutControl1.Controls.Add(this.gridControl1);
@@ -137,8 +147,39 @@
             this.layoutControl1.TabIndex = 0;
             this.layoutControl1.Text = "layoutControl1";
             // 
+            // nCellCodeLeght
+            // 
+            this.nCellCodeLeght.EditValue = new decimal(new int[] {
+            4,
+            0,
+            0,
+            0});
+            this.nCellCodeLeght.Location = new System.Drawing.Point(397, 150);
+            this.nCellCodeLeght.Name = "nCellCodeLeght";
+            this.nCellCodeLeght.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.nCellCodeLeght.Size = new System.Drawing.Size(222, 21);
+            this.nCellCodeLeght.StyleController = this.layoutControl1;
+            this.nCellCodeLeght.TabIndex = 9;
+            // 
+            // nRackAddressLength
+            // 
+            this.nRackAddressLength.EditValue = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
+            this.nRackAddressLength.Location = new System.Drawing.Point(397, 29);
+            this.nRackAddressLength.Name = "nRackAddressLength";
+            this.nRackAddressLength.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
+            new DevExpress.XtraEditors.Controls.EditorButton()});
+            this.nRackAddressLength.Size = new System.Drawing.Size(222, 21);
+            this.nRackAddressLength.StyleController = this.layoutControl1;
+            this.nRackAddressLength.TabIndex = 18;
+            // 
             // ckBackSide
             // 
+            this.ckBackSide.EditValue = true;
             this.ckBackSide.Location = new System.Drawing.Point(320, 246);
             this.ckBackSide.Name = "ckBackSide";
             this.ckBackSide.Properties.Caption = "背面";
@@ -148,6 +189,7 @@
             // 
             // ckFrontSide
             // 
+            this.ckFrontSide.EditValue = true;
             this.ckFrontSide.Location = new System.Drawing.Point(10, 246);
             this.ckFrontSide.Name = "ckFrontSide";
             this.ckFrontSide.Properties.Caption = "正面";
@@ -331,7 +373,7 @@
             // nColEnd
             // 
             this.nColEnd.EditValue = new decimal(new int[] {
-            0,
+            100,
             0,
             0,
             0});
@@ -346,7 +388,7 @@
             // nColStart
             // 
             this.nColStart.EditValue = new decimal(new int[] {
-            0,
+            1,
             0,
             0,
             0});
@@ -361,7 +403,7 @@
             // nLevelEnd
             // 
             this.nLevelEnd.EditValue = new decimal(new int[] {
-            0,
+            7,
             0,
             0,
             0});
@@ -376,7 +418,7 @@
             // nLevelStart
             // 
             this.nLevelStart.EditValue = new decimal(new int[] {
-            0,
+            1,
             0,
             0,
             0});
@@ -390,9 +432,11 @@
             // 
             // txtRackCellCodePrefix
             // 
+            this.txtRackCellCodePrefix.EditValue = "KC";
             this.txtRackCellCodePrefix.Location = new System.Drawing.Point(87, 150);
             this.txtRackCellCodePrefix.Name = "txtRackCellCodePrefix";
-            this.txtRackCellCodePrefix.Size = new System.Drawing.Size(532, 21);
+            this.txtRackCellCodePrefix.Properties.ReadOnly = true;
+            this.txtRackCellCodePrefix.Size = new System.Drawing.Size(222, 21);
             this.txtRackCellCodePrefix.StyleController = this.layoutControl1;
             this.txtRackCellCodePrefix.TabIndex = 7;
             // 
@@ -438,7 +482,7 @@
             0,
             0,
             0});
-            this.nRackAddress.Size = new System.Drawing.Size(532, 21);
+            this.nRackAddress.Size = new System.Drawing.Size(222, 21);
             this.nRackAddress.StyleController = this.layoutControl1;
             this.nRackAddress.TabIndex = 4;
             this.nRackAddress.EditValueChanged += new System.EventHandler(this.nRackAddress_EditValueChanged);
@@ -522,7 +566,8 @@
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem1,
             this.layoutControlItem3,
-            this.layoutControlItem2});
+            this.layoutControlItem2,
+            this.layoutControlItem14});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Size = new System.Drawing.Size(626, 121);
@@ -534,7 +579,7 @@
             this.layoutControlItem1.CustomizationFormText = "貨架地址編號";
             this.layoutControlItem1.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem1.Name = "layoutControlItem1";
-            this.layoutControlItem1.Size = new System.Drawing.Size(620, 32);
+            this.layoutControlItem1.Size = new System.Drawing.Size(310, 32);
             this.layoutControlItem1.Text = "貨架地址編號";
             this.layoutControlItem1.TextLocation = DevExpress.Utils.Locations.Left;
             this.layoutControlItem1.TextSize = new System.Drawing.Size(72, 20);
@@ -561,6 +606,17 @@
             this.layoutControlItem2.TextLocation = DevExpress.Utils.Locations.Left;
             this.layoutControlItem2.TextSize = new System.Drawing.Size(72, 20);
             // 
+            // layoutControlItem14
+            // 
+            this.layoutControlItem14.Control = this.nRackAddressLength;
+            this.layoutControlItem14.CustomizationFormText = "貨架地址長度";
+            this.layoutControlItem14.Location = new System.Drawing.Point(310, 0);
+            this.layoutControlItem14.Name = "layoutControlItem14";
+            this.layoutControlItem14.Size = new System.Drawing.Size(310, 32);
+            this.layoutControlItem14.Text = "貨架地址長度";
+            this.layoutControlItem14.TextLocation = DevExpress.Utils.Locations.Left;
+            this.layoutControlItem14.TextSize = new System.Drawing.Size(72, 20);
+            // 
             // layoutControlGroup3
             // 
             this.layoutControlGroup3.CustomizationFormText = "貨架儲位批量資訊";
@@ -571,7 +627,8 @@
             this.layoutControlItem6,
             this.layoutControlItem8,
             this.layoutControlItem9,
-            this.layoutControlItem13});
+            this.layoutControlItem13,
+            this.layoutControlItem15});
             this.layoutControlGroup3.Location = new System.Drawing.Point(0, 121);
             this.layoutControlGroup3.Name = "layoutControlGroup3";
             this.layoutControlGroup3.Size = new System.Drawing.Size(626, 151);
@@ -583,7 +640,7 @@
             this.layoutControlItem4.CustomizationFormText = "貨位編碼前綴";
             this.layoutControlItem4.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem4.Name = "layoutControlItem4";
-            this.layoutControlItem4.Size = new System.Drawing.Size(620, 32);
+            this.layoutControlItem4.Size = new System.Drawing.Size(310, 32);
             this.layoutControlItem4.Text = "貨位編碼前綴";
             this.layoutControlItem4.TextLocation = DevExpress.Utils.Locations.Left;
             this.layoutControlItem4.TextSize = new System.Drawing.Size(72, 20);
@@ -658,6 +715,17 @@
             this.layoutControlItem13.TextToControlDistance = 0;
             this.layoutControlItem13.TextVisible = false;
             // 
+            // layoutControlItem15
+            // 
+            this.layoutControlItem15.Control = this.nCellCodeLeght;
+            this.layoutControlItem15.CustomizationFormText = "貨位編碼長度";
+            this.layoutControlItem15.Location = new System.Drawing.Point(310, 0);
+            this.layoutControlItem15.Name = "layoutControlItem15";
+            this.layoutControlItem15.Size = new System.Drawing.Size(310, 32);
+            this.layoutControlItem15.Text = "貨位編碼長度";
+            this.layoutControlItem15.TextLocation = DevExpress.Utils.Locations.Left;
+            this.layoutControlItem15.TextSize = new System.Drawing.Size(72, 20);
+            // 
             // RegisterKincoRack
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -669,6 +737,8 @@
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.nCellCodeLeght.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nRackAddressLength.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckBackSide.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.ckFrontSide.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
@@ -692,6 +762,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem14)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
@@ -700,6 +771,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem9)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem13)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem15)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -756,5 +828,9 @@
         private DevExpress.XtraEditors.CheckEdit ckFrontSide;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem9;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem13;
+        private DevExpress.XtraEditors.SpinEdit nCellCodeLeght;
+        private DevExpress.XtraEditors.SpinEdit nRackAddressLength;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem14;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem15;
     }
 }

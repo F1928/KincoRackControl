@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace KincoP2L
+namespace P2L
 {
     static class Program
     {

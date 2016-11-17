@@ -8,7 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using DevExpress.XtraNavBar;
 
-namespace KincoP2L
+namespace P2L
 {
     public partial class Main : DevExpress.XtraEditors.XtraForm
     {
