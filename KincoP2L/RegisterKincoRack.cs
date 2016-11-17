@@ -12,6 +12,7 @@ namespace P2L
     [Function]
     public partial class RegisterKincoRack : DevExpress.XtraEditors.XtraForm
     {
+        string RackVendor = "KINCO";
         public RegisterKincoRack()
         {
             InitializeComponent();
@@ -21,19 +22,21 @@ namespace P2L
 
         private decimal getSuggestAddress()
         {
-            return LocatorManager.SuggestRackAddress("KINCO");
+            return LocatorManager.SuggestRackAddress(RackVendor);
         }
 
         private void Clear()
         {
             this.rackDataSet.Clear();
-            this.txtRackCellCodePrefix.Text = string.Empty;
+            this.txtRackCellCodePrefix.Text = RackVendor;
             this.txtRackParentLocatorCode.Text = string.Empty;
-            this.txtRackLocatorCode.Text = string.Empty;
+            decimal count = LocatorManager.GetRackCount(RackVendor);
+            this.txtRackLocatorCode.Text = string.Format("{0}-{1}", this.RackVendor, (count + 1).ToString().PadLeft(3, '0'));
             decimal suggestAddress = getSuggestAddress();
 
-            this.ckBackSide.Checked = false;
-            this.ckFrontSide.Checked = false;
+
+            this.ckBackSide.Checked = true;
+            this.ckFrontSide.Checked = true;
             
             this.nRackAddress.Value = suggestAddress;
             this.btCreate.Enabled = true;
@@ -83,7 +86,7 @@ namespace P2L
                 if (ckBackSide.Checked)
                     tmp = tmp + 1;
 
-                bool rackAddressExists = LocatorManager.RackAddressExists(tmp);
+                bool rackAddressExists = LocatorManager.RackAddressExists(RackVendor, tmp);
                 if (rackAddressExists)
                 {
 
@@ -114,7 +117,7 @@ namespace P2L
                     newRow.SetDISABLE_BILL_IDNull();
                     newRow.CODE = txtRackLocatorCode.Text.Trim();
                     newRow.NAME = txtRackLocatorCode.Text.Trim();
-                    newRow.DESCRIPTION = "Intelligent Rack";
+                    newRow.DESCRIPTION = this.RackVendor + " Intelligent Rack";
                     newRow.TYPE = 20; // 撿料區域
                     newRow.PARENT_ID = parentLocatorID;
                     rackDataSet.IMS_LOCATOR.AddIMS_LOCATORRow(newRow);
@@ -180,6 +183,7 @@ namespace P2L
                     newRow.COL_NUM = c;
                     newRow.RACK_LOCATOR_ID = rackLocatorID;
                     newRow.RACK_ADDRESS = rackAddress;
+                    newRow.RACK_VENDOR = this.RackVendor;
                     this.rackDataSet.IMS_INTELLIGENT_RACK_CELL_INFO.AddIMS_INTELLIGENT_RACK_CELL_INFORow(newRow);
 
                 }

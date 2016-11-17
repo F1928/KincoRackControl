@@ -49,13 +49,17 @@
             this.colFRONT_ADDRESS = new DevExpress.XtraGrid.Columns.GridColumn();
             this.colBACK_ADDRESS = new DevExpress.XtraGrid.Columns.GridColumn();
             this.tabControl = new DevExpress.XtraTab.XtraTabControl();
-            this.pageMutiRackControl = new DevExpress.XtraTab.XtraTabPage();
+            this.pageMutiControl = new DevExpress.XtraTab.XtraTabPage();
             this.layoutControl2 = new DevExpress.XtraLayout.LayoutControl();
-            this.ckMutiRackControl1 = new DevExpress.XtraEditors.CheckEdit();
-            this.ckMutiRackControl0 = new DevExpress.XtraEditors.CheckEdit();
+            this.ckTurnOnAll = new DevExpress.XtraEditors.CheckEdit();
+            this.ckTurnOffAll = new DevExpress.XtraEditors.CheckEdit();
+            this.ckTurnOnTower = new DevExpress.XtraEditors.CheckEdit();
+            this.ckTurnOffTower = new DevExpress.XtraEditors.CheckEdit();
             this.layoutControlGroup2 = new DevExpress.XtraLayout.LayoutControlGroup();
             this.layoutControlItem5 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem6 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem7 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.layoutControlItem8 = new DevExpress.XtraLayout.LayoutControlItem();
             this.pageMutiLightControl = new DevExpress.XtraTab.XtraTabPage();
             this.mmSelectedLightsForMulti = new DevExpress.XtraEditors.MemoEdit();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
@@ -69,6 +73,7 @@
             this.layoutControlItem3 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem4 = new DevExpress.XtraLayout.LayoutControlItem();
             this.layoutControlItem12 = new DevExpress.XtraLayout.LayoutControlItem();
+            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             this.splitterControl1 = new DevExpress.XtraEditors.SplitterControl();
             this.imageCollectionOfMenu = new DevExpress.Utils.ImageCollection(this.components);
             this.barManager = new DevExpress.XtraBars.BarManager(this.components);
@@ -78,17 +83,16 @@
             this.barDockControlRight = new DevExpress.XtraBars.BarDockControl();
             this.dockManager = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.bbiTurnOffLED = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiTurnOnGreenLED = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiTurnOnLED = new DevExpress.XtraBars.BarButtonItem();
             this.bbiTurnOnRedLED = new DevExpress.XtraBars.BarButtonItem();
             this.bbiSelect = new DevExpress.XtraBars.BarButtonItem();
-            this.bbiFlashGreen = new DevExpress.XtraBars.BarButtonItem();
+            this.bbiFlash = new DevExpress.XtraBars.BarButtonItem();
             this.bbiFlashRed = new DevExpress.XtraBars.BarButtonItem();
             this.popupMenu = new DevExpress.XtraBars.PopupMenu(this.components);
             this.xtraTabControl2 = new DevExpress.XtraTab.XtraTabControl();
             this.pageFront = new DevExpress.XtraTab.XtraTabPage();
             this.pageBack = new DevExpress.XtraTab.XtraTabPage();
             this.tableLayoutPanelBack = new System.Windows.Forms.TableLayoutPanel();
-            this.emptySpaceItem1 = new DevExpress.XtraLayout.EmptySpaceItem();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).BeginInit();
             this.layoutControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).BeginInit();
@@ -100,14 +104,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckBack)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl)).BeginInit();
             this.tabControl.SuspendLayout();
-            this.pageMutiRackControl.SuspendLayout();
+            this.pageMutiControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).BeginInit();
             this.layoutControl2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.ckMutiRackControl1.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckMutiRackControl0.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckTurnOnAll.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckTurnOffAll.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckTurnOnTower.Properties)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckTurnOffTower.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).BeginInit();
             this.pageMutiLightControl.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.mmSelectedLightsForMulti.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
@@ -122,6 +130,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionOfMenu)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager)).BeginInit();
@@ -130,7 +139,6 @@
             this.xtraTabControl2.SuspendLayout();
             this.pageFront.SuspendLayout();
             this.pageBack.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanelFront
@@ -251,6 +259,9 @@
             this.repositoryItemChecked.AutoHeight = false;
             this.repositoryItemChecked.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.UserDefined;
             this.repositoryItemChecked.Name = "repositoryItemChecked";
+            this.repositoryItemChecked.PictureChecked = global::P2L.Properties.Resources.check_green_24;
+            this.repositoryItemChecked.PictureGrayed = global::P2L.Properties.Resources.blank_gray_24;
+            this.repositoryItemChecked.PictureUnchecked = global::P2L.Properties.Resources.blank_gray_24;
             // 
             // colCHECKED_FRONT
             // 
@@ -267,6 +278,9 @@
             this.repositoryItemCheckFront.AutoHeight = false;
             this.repositoryItemCheckFront.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.UserDefined;
             this.repositoryItemCheckFront.Name = "repositoryItemCheckFront";
+            this.repositoryItemCheckFront.PictureChecked = global::P2L.Properties.Resources.check_green_24;
+            this.repositoryItemCheckFront.PictureGrayed = global::P2L.Properties.Resources.blank_gray_24;
+            this.repositoryItemCheckFront.PictureUnchecked = global::P2L.Properties.Resources.blank_gray_24;
             // 
             // colCHECKED_BACK
             // 
@@ -283,6 +297,9 @@
             this.repositoryItemCheckBack.AutoHeight = false;
             this.repositoryItemCheckBack.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.UserDefined;
             this.repositoryItemCheckBack.Name = "repositoryItemCheckBack";
+            this.repositoryItemCheckBack.PictureChecked = global::P2L.Properties.Resources.check_green_24;
+            this.repositoryItemCheckBack.PictureGrayed = global::P2L.Properties.Resources.blank_gray_24;
+            this.repositoryItemCheckBack.PictureUnchecked = global::P2L.Properties.Resources.blank_gray_24;
             // 
             // colCODE
             // 
@@ -310,27 +327,29 @@
             // 
             this.tabControl.Location = new System.Drawing.Point(467, 7);
             this.tabControl.Name = "tabControl";
-            this.tabControl.SelectedTabPage = this.pageMutiRackControl;
+            this.tabControl.SelectedTabPage = this.pageMutiControl;
             this.tabControl.Size = new System.Drawing.Size(387, 175);
             this.tabControl.TabIndex = 4;
             this.tabControl.TabPages.AddRange(new DevExpress.XtraTab.XtraTabPage[] {
-            this.pageMutiRackControl,
+            this.pageMutiControl,
             this.pageMutiLightControl,
             this.pageLightFlashControl});
             this.tabControl.Text = "xtraTabControl1";
             this.tabControl.SelectedPageChanged += new DevExpress.XtraTab.TabPageChangedEventHandler(this.tabControl_SelectedPageChanged);
             // 
-            // pageMutiRackControl
+            // pageMutiControl
             // 
-            this.pageMutiRackControl.Controls.Add(this.layoutControl2);
-            this.pageMutiRackControl.Name = "pageMutiRackControl";
-            this.pageMutiRackControl.Size = new System.Drawing.Size(378, 143);
-            this.pageMutiRackControl.Text = "燈塔控制";
+            this.pageMutiControl.Controls.Add(this.layoutControl2);
+            this.pageMutiControl.Name = "pageMutiControl";
+            this.pageMutiControl.Size = new System.Drawing.Size(378, 143);
+            this.pageMutiControl.Text = "全盘控制";
             // 
             // layoutControl2
             // 
-            this.layoutControl2.Controls.Add(this.ckMutiRackControl1);
-            this.layoutControl2.Controls.Add(this.ckMutiRackControl0);
+            this.layoutControl2.Controls.Add(this.ckTurnOnAll);
+            this.layoutControl2.Controls.Add(this.ckTurnOffAll);
+            this.layoutControl2.Controls.Add(this.ckTurnOnTower);
+            this.layoutControl2.Controls.Add(this.ckTurnOffTower);
             this.layoutControl2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.layoutControl2.Location = new System.Drawing.Point(0, 0);
             this.layoutControl2.Name = "layoutControl2";
@@ -339,38 +358,66 @@
             this.layoutControl2.TabIndex = 1;
             this.layoutControl2.Text = "layoutControl2";
             // 
-            // ckMutiRackControl1
+            // ckTurnOnAll
             // 
-            this.ckMutiRackControl1.Location = new System.Drawing.Point(4, 37);
-            this.ckMutiRackControl1.Name = "ckMutiRackControl1";
-            this.ckMutiRackControl1.Properties.Caption = "燈塔亮(狀態碼:1)";
-            this.ckMutiRackControl1.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.UserDefined;
-            this.ckMutiRackControl1.Properties.PictureChecked = global::P2L.Properties.Resources.check_green_24;
-            this.ckMutiRackControl1.Properties.PictureGrayed = global::P2L.Properties.Resources.blank_gray_24;
-            this.ckMutiRackControl1.Properties.PictureUnchecked = global::P2L.Properties.Resources.blank_gray_24;
-            this.ckMutiRackControl1.Size = new System.Drawing.Size(371, 28);
-            this.ckMutiRackControl1.StyleController = this.layoutControl2;
-            this.ckMutiRackControl1.TabIndex = 6;
+            this.ckTurnOnAll.Location = new System.Drawing.Point(4, 103);
+            this.ckTurnOnAll.Name = "ckTurnOnAll";
+            this.ckTurnOnAll.Properties.Caption = "全部亮燈(狀態碼:1)";
+            this.ckTurnOnAll.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.UserDefined;
+            this.ckTurnOnAll.Properties.PictureChecked = global::P2L.Properties.Resources.check_green_24;
+            this.ckTurnOnAll.Properties.PictureGrayed = global::P2L.Properties.Resources.blank_gray_24;
+            this.ckTurnOnAll.Properties.PictureUnchecked = global::P2L.Properties.Resources.blank_gray_24;
+            this.ckTurnOnAll.Size = new System.Drawing.Size(371, 28);
+            this.ckTurnOnAll.StyleController = this.layoutControl2;
+            this.ckTurnOnAll.TabIndex = 7;
             // 
-            // ckMutiRackControl0
+            // ckTurnOffAll
             // 
-            this.ckMutiRackControl0.Location = new System.Drawing.Point(4, 4);
-            this.ckMutiRackControl0.Name = "ckMutiRackControl0";
-            this.ckMutiRackControl0.Properties.Caption = "燈塔滅(狀態碼:0)";
-            this.ckMutiRackControl0.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.UserDefined;
-            this.ckMutiRackControl0.Properties.PictureChecked = global::P2L.Properties.Resources.check_green_24;
-            this.ckMutiRackControl0.Properties.PictureGrayed = global::P2L.Properties.Resources.blank_gray_24;
-            this.ckMutiRackControl0.Properties.PictureUnchecked = global::P2L.Properties.Resources.blank_gray_24;
-            this.ckMutiRackControl0.Size = new System.Drawing.Size(371, 28);
-            this.ckMutiRackControl0.StyleController = this.layoutControl2;
-            this.ckMutiRackControl0.TabIndex = 4;
+            this.ckTurnOffAll.Location = new System.Drawing.Point(4, 70);
+            this.ckTurnOffAll.Name = "ckTurnOffAll";
+            this.ckTurnOffAll.Properties.Caption = "全部滅燈(狀態碼:0)";
+            this.ckTurnOffAll.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.UserDefined;
+            this.ckTurnOffAll.Properties.PictureChecked = global::P2L.Properties.Resources.check_green_24;
+            this.ckTurnOffAll.Properties.PictureGrayed = global::P2L.Properties.Resources.blank_gray_24;
+            this.ckTurnOffAll.Properties.PictureUnchecked = global::P2L.Properties.Resources.blank_gray_24;
+            this.ckTurnOffAll.Size = new System.Drawing.Size(371, 28);
+            this.ckTurnOffAll.StyleController = this.layoutControl2;
+            this.ckTurnOffAll.TabIndex = 7;
+            // 
+            // ckTurnOnTower
+            // 
+            this.ckTurnOnTower.Location = new System.Drawing.Point(4, 37);
+            this.ckTurnOnTower.Name = "ckTurnOnTower";
+            this.ckTurnOnTower.Properties.Caption = "燈塔亮(狀態碼:1)";
+            this.ckTurnOnTower.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.UserDefined;
+            this.ckTurnOnTower.Properties.PictureChecked = global::P2L.Properties.Resources.check_green_24;
+            this.ckTurnOnTower.Properties.PictureGrayed = global::P2L.Properties.Resources.blank_gray_24;
+            this.ckTurnOnTower.Properties.PictureUnchecked = global::P2L.Properties.Resources.blank_gray_24;
+            this.ckTurnOnTower.Size = new System.Drawing.Size(371, 28);
+            this.ckTurnOnTower.StyleController = this.layoutControl2;
+            this.ckTurnOnTower.TabIndex = 6;
+            // 
+            // ckTurnOffTower
+            // 
+            this.ckTurnOffTower.Location = new System.Drawing.Point(4, 4);
+            this.ckTurnOffTower.Name = "ckTurnOffTower";
+            this.ckTurnOffTower.Properties.Caption = "燈塔滅(狀態碼:0)";
+            this.ckTurnOffTower.Properties.CheckStyle = DevExpress.XtraEditors.Controls.CheckStyles.UserDefined;
+            this.ckTurnOffTower.Properties.PictureChecked = global::P2L.Properties.Resources.check_green_24;
+            this.ckTurnOffTower.Properties.PictureGrayed = global::P2L.Properties.Resources.blank_gray_24;
+            this.ckTurnOffTower.Properties.PictureUnchecked = global::P2L.Properties.Resources.blank_gray_24;
+            this.ckTurnOffTower.Size = new System.Drawing.Size(371, 28);
+            this.ckTurnOffTower.StyleController = this.layoutControl2;
+            this.ckTurnOffTower.TabIndex = 4;
             // 
             // layoutControlGroup2
             // 
             this.layoutControlGroup2.CustomizationFormText = "layoutControlGroup2";
             this.layoutControlGroup2.Items.AddRange(new DevExpress.XtraLayout.BaseLayoutItem[] {
             this.layoutControlItem5,
-            this.layoutControlItem6});
+            this.layoutControlItem6,
+            this.layoutControlItem7,
+            this.layoutControlItem8});
             this.layoutControlGroup2.Location = new System.Drawing.Point(0, 0);
             this.layoutControlGroup2.Name = "layoutControlGroup2";
             this.layoutControlGroup2.Size = new System.Drawing.Size(378, 143);
@@ -380,7 +427,7 @@
             // 
             // layoutControlItem5
             // 
-            this.layoutControlItem5.Control = this.ckMutiRackControl0;
+            this.layoutControlItem5.Control = this.ckTurnOffTower;
             this.layoutControlItem5.CustomizationFormText = "layoutControlItem5";
             this.layoutControlItem5.Location = new System.Drawing.Point(0, 0);
             this.layoutControlItem5.Name = "layoutControlItem5";
@@ -394,24 +441,52 @@
             // 
             // layoutControlItem6
             // 
-            this.layoutControlItem6.Control = this.ckMutiRackControl1;
+            this.layoutControlItem6.Control = this.ckTurnOnTower;
             this.layoutControlItem6.CustomizationFormText = "layoutControlItem6";
             this.layoutControlItem6.Location = new System.Drawing.Point(0, 33);
             this.layoutControlItem6.Name = "layoutControlItem6";
             this.layoutControlItem6.Padding = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
-            this.layoutControlItem6.Size = new System.Drawing.Size(376, 108);
+            this.layoutControlItem6.Size = new System.Drawing.Size(376, 33);
             this.layoutControlItem6.Text = "layoutControlItem6";
             this.layoutControlItem6.TextLocation = DevExpress.Utils.Locations.Left;
             this.layoutControlItem6.TextSize = new System.Drawing.Size(0, 0);
             this.layoutControlItem6.TextToControlDistance = 0;
             this.layoutControlItem6.TextVisible = false;
             // 
+            // layoutControlItem7
+            // 
+            this.layoutControlItem7.Control = this.ckTurnOffAll;
+            this.layoutControlItem7.CustomizationFormText = "layoutControlItem7";
+            this.layoutControlItem7.Location = new System.Drawing.Point(0, 66);
+            this.layoutControlItem7.Name = "layoutControlItem7";
+            this.layoutControlItem7.Padding = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
+            this.layoutControlItem7.Size = new System.Drawing.Size(376, 33);
+            this.layoutControlItem7.Text = "layoutControlItem7";
+            this.layoutControlItem7.TextLocation = DevExpress.Utils.Locations.Left;
+            this.layoutControlItem7.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem7.TextToControlDistance = 0;
+            this.layoutControlItem7.TextVisible = false;
+            // 
+            // layoutControlItem8
+            // 
+            this.layoutControlItem8.Control = this.ckTurnOnAll;
+            this.layoutControlItem8.CustomizationFormText = "layoutControlItem8";
+            this.layoutControlItem8.Location = new System.Drawing.Point(0, 99);
+            this.layoutControlItem8.Name = "layoutControlItem8";
+            this.layoutControlItem8.Padding = new DevExpress.XtraLayout.Utils.Padding(2, 2, 2, 2);
+            this.layoutControlItem8.Size = new System.Drawing.Size(376, 42);
+            this.layoutControlItem8.Text = "layoutControlItem8";
+            this.layoutControlItem8.TextLocation = DevExpress.Utils.Locations.Left;
+            this.layoutControlItem8.TextSize = new System.Drawing.Size(0, 0);
+            this.layoutControlItem8.TextToControlDistance = 0;
+            this.layoutControlItem8.TextVisible = false;
+            // 
             // pageMutiLightControl
             // 
             this.pageMutiLightControl.Controls.Add(this.mmSelectedLightsForMulti);
             this.pageMutiLightControl.Controls.Add(this.panelControl1);
             this.pageMutiLightControl.Name = "pageMutiLightControl";
-            this.pageMutiLightControl.Size = new System.Drawing.Size(303, 143);
+            this.pageMutiLightControl.Size = new System.Drawing.Size(378, 143);
             this.pageMutiLightControl.Text = "多燈控制";
             // 
             // mmSelectedLightsForMulti
@@ -420,7 +495,7 @@
             this.mmSelectedLightsForMulti.Location = new System.Drawing.Point(0, 0);
             this.mmSelectedLightsForMulti.Name = "mmSelectedLightsForMulti";
             this.mmSelectedLightsForMulti.Properties.ReadOnly = true;
-            this.mmSelectedLightsForMulti.Size = new System.Drawing.Size(303, 102);
+            this.mmSelectedLightsForMulti.Size = new System.Drawing.Size(378, 102);
             this.mmSelectedLightsForMulti.TabIndex = 1;
             // 
             // panelControl1
@@ -430,7 +505,7 @@
             this.panelControl1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panelControl1.Location = new System.Drawing.Point(0, 102);
             this.panelControl1.Name = "panelControl1";
-            this.panelControl1.Size = new System.Drawing.Size(303, 41);
+            this.panelControl1.Size = new System.Drawing.Size(378, 41);
             this.panelControl1.TabIndex = 11;
             // 
             // ckLightOff
@@ -463,7 +538,7 @@
             // 
             this.pageLightFlashControl.Controls.Add(this.mmSelectedLightsForFlash);
             this.pageLightFlashControl.Name = "pageLightFlashControl";
-            this.pageLightFlashControl.Size = new System.Drawing.Size(303, 143);
+            this.pageLightFlashControl.Size = new System.Drawing.Size(378, 143);
             this.pageLightFlashControl.Text = "閃燈控制";
             // 
             // mmSelectedLightsForFlash
@@ -472,7 +547,7 @@
             this.mmSelectedLightsForFlash.Location = new System.Drawing.Point(0, 0);
             this.mmSelectedLightsForFlash.Name = "mmSelectedLightsForFlash";
             this.mmSelectedLightsForFlash.Properties.ReadOnly = true;
-            this.mmSelectedLightsForFlash.Size = new System.Drawing.Size(303, 143);
+            this.mmSelectedLightsForFlash.Size = new System.Drawing.Size(378, 143);
             this.mmSelectedLightsForFlash.TabIndex = 1;
             // 
             // layoutControlGroup1
@@ -569,6 +644,15 @@
             this.layoutControlItem12.TextToControlDistance = 0;
             this.layoutControlItem12.TextVisible = false;
             // 
+            // emptySpaceItem1
+            // 
+            this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
+            this.emptySpaceItem1.Location = new System.Drawing.Point(595, 186);
+            this.emptySpaceItem1.Name = "emptySpaceItem1";
+            this.emptySpaceItem1.Size = new System.Drawing.Size(75, 40);
+            this.emptySpaceItem1.Text = "emptySpaceItem1";
+            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
+            // 
             // splitterControl1
             // 
             this.splitterControl1.Dock = System.Windows.Forms.DockStyle.Top;
@@ -594,10 +678,10 @@
             this.barManager.Images = this.imageCollectionOfMenu;
             this.barManager.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
             this.bbiTurnOffLED,
-            this.bbiTurnOnGreenLED,
+            this.bbiTurnOnLED,
             this.bbiTurnOnRedLED,
             this.bbiSelect,
-            this.bbiFlashGreen,
+            this.bbiFlash,
             this.bbiFlashRed});
             this.barManager.MaxItemId = 6;
             // 
@@ -618,13 +702,13 @@
             this.bbiTurnOffLED.Name = "bbiTurnOffLED";
             this.bbiTurnOffLED.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiTurnOffLED_ItemClick);
             // 
-            // bbiTurnOnGreenLED
+            // bbiTurnOnLED
             // 
-            this.bbiTurnOnGreenLED.Caption = "亮燈";
-            this.bbiTurnOnGreenLED.Id = 1;
-            this.bbiTurnOnGreenLED.ImageIndex = 1;
-            this.bbiTurnOnGreenLED.Name = "bbiTurnOnGreenLED";
-            this.bbiTurnOnGreenLED.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiTurnOnGreenLED_ItemClick);
+            this.bbiTurnOnLED.Caption = "亮燈";
+            this.bbiTurnOnLED.Id = 1;
+            this.bbiTurnOnLED.ImageIndex = 1;
+            this.bbiTurnOnLED.Name = "bbiTurnOnLED";
+            this.bbiTurnOnLED.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiTurnOnLED_ItemClick);
             // 
             // bbiTurnOnRedLED
             // 
@@ -632,7 +716,6 @@
             this.bbiTurnOnRedLED.Id = 2;
             this.bbiTurnOnRedLED.ImageIndex = 2;
             this.bbiTurnOnRedLED.Name = "bbiTurnOnRedLED";
-            this.bbiTurnOnRedLED.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiTurnOnRedLED_ItemClick);
             // 
             // bbiSelect
             // 
@@ -643,13 +726,13 @@
             this.bbiSelect.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             this.bbiSelect.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiSelect_ItemClick);
             // 
-            // bbiFlashGreen
+            // bbiFlash
             // 
-            this.bbiFlashGreen.Caption = "閃爍";
-            this.bbiFlashGreen.Id = 4;
-            this.bbiFlashGreen.ImageIndex = 4;
-            this.bbiFlashGreen.Name = "bbiFlashGreen";
-            this.bbiFlashGreen.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFlashGreen_ItemClick);
+            this.bbiFlash.Caption = "閃爍";
+            this.bbiFlash.Id = 4;
+            this.bbiFlash.ImageIndex = 4;
+            this.bbiFlash.Name = "bbiFlash";
+            this.bbiFlash.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFlash_ItemClick);
             // 
             // bbiFlashRed
             // 
@@ -657,15 +740,14 @@
             this.bbiFlashRed.Id = 5;
             this.bbiFlashRed.ImageIndex = 5;
             this.bbiFlashRed.Name = "bbiFlashRed";
-            this.bbiFlashRed.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.bbiFlashRed_ItemClick);
             // 
             // popupMenu
             // 
             this.popupMenu.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.bbiSelect),
             new DevExpress.XtraBars.LinkPersistInfo(DevExpress.XtraBars.BarLinkUserDefines.PaintStyle, this.bbiTurnOffLED, "", true, true, true, 0, null, DevExpress.XtraBars.BarItemPaintStyle.CaptionGlyph),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiTurnOnGreenLED),
-            new DevExpress.XtraBars.LinkPersistInfo(this.bbiFlashGreen, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiTurnOnLED),
+            new DevExpress.XtraBars.LinkPersistInfo(this.bbiFlash, true)});
             this.popupMenu.Manager = this.barManager;
             this.popupMenu.Name = "popupMenu";
             // 
@@ -711,15 +793,6 @@
             this.tableLayoutPanelBack.Size = new System.Drawing.Size(851, 319);
             this.tableLayoutPanelBack.TabIndex = 1;
             // 
-            // emptySpaceItem1
-            // 
-            this.emptySpaceItem1.CustomizationFormText = "emptySpaceItem1";
-            this.emptySpaceItem1.Location = new System.Drawing.Point(595, 186);
-            this.emptySpaceItem1.Name = "emptySpaceItem1";
-            this.emptySpaceItem1.Size = new System.Drawing.Size(75, 40);
-            this.emptySpaceItem1.Text = "emptySpaceItem1";
-            this.emptySpaceItem1.TextSize = new System.Drawing.Size(0, 0);
-            // 
             // SMTNRackControl
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -734,7 +807,7 @@
             this.Controls.Add(this.barDockControlTop);
             this.DoubleBuffered = true;
             this.Name = "SMTNRackControl";
-            this.Text = "SMTN物料燈管控中心";
+            this.Text = "立宇智能貨架燈管控中心";
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gridControl1)).EndInit();
@@ -746,14 +819,18 @@
             ((System.ComponentModel.ISupportInitialize)(this.repositoryItemCheckBack)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.tabControl)).EndInit();
             this.tabControl.ResumeLayout(false);
-            this.pageMutiRackControl.ResumeLayout(false);
+            this.pageMutiControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl2)).EndInit();
             this.layoutControl2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.ckMutiRackControl1.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ckMutiRackControl0.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckTurnOnAll.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckTurnOffAll.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckTurnOnTower.Properties)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.ckTurnOffTower.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlGroup2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem7)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem8)).EndInit();
             this.pageMutiLightControl.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.mmSelectedLightsForMulti.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
@@ -768,6 +845,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.layoutControlItem12)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollectionOfMenu)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.barManager)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dockManager)).EndInit();
@@ -776,7 +854,6 @@
             this.xtraTabControl2.ResumeLayout(false);
             this.pageFront.ResumeLayout(false);
             this.pageBack.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.emptySpaceItem1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -788,7 +865,7 @@
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
         private DevExpress.XtraTab.XtraTabControl tabControl;
-        private DevExpress.XtraTab.XtraTabPage pageMutiRackControl;
+        private DevExpress.XtraTab.XtraTabPage pageMutiControl;
         private DevExpress.XtraTab.XtraTabPage pageMutiLightControl;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup1;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem1;
@@ -806,7 +883,7 @@
         private DevExpress.XtraBars.BarDockControl barDockControlLeft;
         private DevExpress.XtraBars.BarDockControl barDockControlRight;
         private DevExpress.XtraBars.BarButtonItem bbiTurnOffLED;
-        private DevExpress.XtraBars.BarButtonItem bbiTurnOnGreenLED;
+        private DevExpress.XtraBars.BarButtonItem bbiTurnOnLED;
         private DevExpress.XtraBars.BarButtonItem bbiTurnOnRedLED;
         private DevExpress.XtraBars.PopupMenu popupMenu;
         private DevExpress.XtraTab.XtraTabPage pageLightFlashControl;
@@ -822,8 +899,8 @@
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem3;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem4;
         private DevExpress.XtraLayout.LayoutControl layoutControl2;
-        private DevExpress.XtraEditors.CheckEdit ckMutiRackControl1;
-        private DevExpress.XtraEditors.CheckEdit ckMutiRackControl0;
+        private DevExpress.XtraEditors.CheckEdit ckTurnOnTower;
+        private DevExpress.XtraEditors.CheckEdit ckTurnOffTower;
         private DevExpress.XtraLayout.LayoutControlGroup layoutControlGroup2;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem5;
         private DevExpress.XtraLayout.LayoutControlItem layoutControlItem6;
@@ -839,8 +916,12 @@
         private DevExpress.XtraEditors.PanelControl panelControl1;
         private DevExpress.XtraEditors.CheckEdit ckLightOff;
         private DevExpress.XtraEditors.CheckEdit ckLightOn;
-        private DevExpress.XtraBars.BarButtonItem bbiFlashGreen;
+        private DevExpress.XtraBars.BarButtonItem bbiFlash;
         private DevExpress.XtraBars.BarButtonItem bbiFlashRed;
         private DevExpress.XtraLayout.EmptySpaceItem emptySpaceItem1;
+        private DevExpress.XtraEditors.CheckEdit ckTurnOnAll;
+        private DevExpress.XtraEditors.CheckEdit ckTurnOffAll;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem7;
+        private DevExpress.XtraLayout.LayoutControlItem layoutControlItem8;
     }
 }

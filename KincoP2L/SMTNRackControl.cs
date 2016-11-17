@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using System.Threading.Tasks;
-using KincoLightManager;
+using SMTNLightManager;
 
 namespace P2L
 {
@@ -19,8 +19,8 @@ namespace P2L
         List<DevExpress.XtraEditors.CheckEdit> ckEditListForMultiRackControl = new List<DevExpress.XtraEditors.CheckEdit>();
         List<DevExpress.XtraEditors.CheckEdit> ckEditListForMultiLightsControl = new List<DevExpress.XtraEditors.CheckEdit>();
   
-        List<KeyValuePair<ushort, ushort>> listForMultiLightsControl = new List<KeyValuePair<ushort, ushort>>();
-        List<KeyValuePair<ushort, ushort>> listForFlashControl = new List<KeyValuePair<ushort, ushort>>();
+        List<string> listForMultiLightsControl = new List<string>();
+        List<string> listForFlashControl = new List<string>();
 
         public SMTNRackControl()
         {
@@ -47,8 +47,10 @@ namespace P2L
             this.bindingSource.Position = -1;
 
             this.ckEditListForMultiRackControl.Clear();
-            this.ckEditListForMultiRackControl.Add(this.ckMutiRackControl0);
-            this.ckEditListForMultiRackControl.Add(this.ckMutiRackControl1);
+            this.ckEditListForMultiRackControl.Add(this.ckTurnOffTower);
+            this.ckEditListForMultiRackControl.Add(this.ckTurnOnTower);
+            this.ckEditListForMultiRackControl.Add(this.ckTurnOffAll);
+            this.ckEditListForMultiRackControl.Add(this.ckTurnOnAll);
 
             foreach (var ck in this.ckEditListForMultiRackControl)
                 ck.Checked = false;
@@ -179,7 +181,7 @@ namespace P2L
                         foreach (var c in q)
                         {
                             RackLed led = new RackLed();
-                            led.LocatorCode = c.CODE;
+                            led.LocatorCode = c.CODE.Replace("SMTN","");
                             led.Address = (ushort)c.ADDRESS;
                             led.RackAddress = (ushort)c.RACK_ADDRESS;
                             led.ImageIndex = 0;
@@ -214,10 +216,6 @@ namespace P2L
 
         }
 
-       
-        void led_CommandSended(object sender, CommandEventArg e)
-        {            
-        }
              
 
         void led_Click(object sender, EventArgs e)
@@ -228,46 +226,29 @@ namespace P2L
 
         private void bbiTurnOffLED_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
+            CommandCenter.TurnOffLed(tempLed.LocatorCode);
         }
 
-        private void bbiTurnOnGreenLED_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void bbiTurnOnLED_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            
+            CommandCenter.TurnOnLed(tempLed.LocatorCode);
         }
 
-        private void bbiTurnOnRedLED_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            
-        }
 
         private void bbiSelect_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-
             this.DoSelected();
         }
 
-        private void bbiFlashGreen_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        private void bbiFlash_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             LedFlashParamPicker frm = new LedFlashParamPicker();
             DialogResult result = frm.ShowDialog(this);
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                
-            }
-           
+                CommandCenter.FlashLed(tempLed.LocatorCode, frm.OnTime, frm.OffTime, frm.FlashCount);
+            }           
         }
-
-        private void bbiFlashRed_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            LedFlashParamPicker frm = new LedFlashParamPicker();
-            DialogResult result = frm.ShowDialog(this);
-            if (result == System.Windows.Forms.DialogResult.OK)
-            {
-                
-            }
-        }
-
 
         private void DoSelected()
         {
@@ -275,22 +256,21 @@ namespace P2L
 
             if (this.tabControl.SelectedTabPage == pageMutiLightControl)
             {
-                this.listForMultiLightsControl.Add(new KeyValuePair<ushort, ushort>(tempLed.RackAddress, tempLed.Address));
+                this.listForMultiLightsControl.Add(tempLed.LocatorCode);
                 StringBuilder sb = new StringBuilder();
                 foreach (var addr in this.listForMultiLightsControl)
                 {
-                    sb.AppendFormat(" [{0},{1}] ", addr.Key, addr.Value);
+                    sb.AppendFormat(" [{0}] ", addr);
                 }
                 this.mmSelectedLightsForMulti.Text = sb.ToString();
             }
-
             else if (this.tabControl.SelectedTabPage == pageLightFlashControl)
             {
-                this.listForFlashControl.Add(new KeyValuePair<ushort, ushort>(tempLed.RackAddress, tempLed.Address));
+                this.listForFlashControl.Add(tempLed.LocatorCode);
                 StringBuilder sb = new StringBuilder();
                 foreach (var addr in this.listForFlashControl)
                 {
-                    sb.AppendFormat(" [{0},{1}] ", addr.Key, addr.Value);
+                    sb.AppendFormat(" [{0}] ", addr);
                 }
                 this.mmSelectedLightsForFlash.Text = sb.ToString();
             }
@@ -316,30 +296,38 @@ namespace P2L
                 Messenger.ShowException("請選擇您要進行多貨架控制的命令類型!");
                 return;
             }
-
-            RackTowerLedStatus toStatus = RackTowerLedStatus.RackLedOff_TowerWhiteOff;
-            if (this.ckMutiRackControl0.Checked)
-                toStatus = RackTowerLedStatus.RackLedOff_TowerWhiteOff;
-            if (this.ckMutiRackControl1.Checked)
-                toStatus = RackTowerLedStatus.RackGreenOn_TowerWhiteOn;
-
             
-            List<ushort> rackAddressList = new List<ushort>();
+            List<string> rackAddressList = new List<string>();
             foreach (var row in list)
             {
                 if (row.CHECKED_FRONT)
-                    rackAddressList.Add((ushort)row.FRONT_ADDRESS);
+                    rackAddressList.Add(row.FRONT_ADDRESS.ToString().PadLeft(3,'0'));
                 if (row.CHECKED_BACK)
-                    rackAddressList.Add((ushort)row.BACK_ADDRESS);
+                    rackAddressList.Add(row.BACK_ADDRESS.ToString().PadLeft(3, '0'));
                 if (row.CHECKED_BACK == false && row.CHECKED_FRONT == false)
                 {
-                    rackAddressList.Add((ushort)row.FRONT_ADDRESS);
-                    rackAddressList.Add((ushort)row.BACK_ADDRESS);
+                    rackAddressList.Add(row.FRONT_ADDRESS.ToString().PadLeft(3, '0'));
+                    rackAddressList.Add(row.BACK_ADDRESS.ToString().PadLeft(3, '0'));
                 }
             }
+            
 
-            KincoLightManager.Boss cmdBoss = new Boss();
-            cmdBoss.SendRackControlCmd(toStatus, rackAddressList.ToArray());
+            if (this.ckTurnOffTower.Checked)
+            {
+                CommandCenter.LightHouseControl(LedAction.Off, rackAddressList.ToArray());
+            }
+            else if (this.ckTurnOnTower.Checked)
+            {
+                CommandCenter.LightHouseControl(LedAction.On, rackAddressList.ToArray());
+            }
+            else if (this.ckTurnOnAll.Checked)
+            {
+                CommandCenter.TurnOnAll(rackAddressList.ToArray());
+            }
+            else if (this.ckTurnOffAll.Checked)
+            {
+                CommandCenter.TurnOffAll(rackAddressList.ToArray());
+            }
 
         }
 
@@ -360,13 +348,14 @@ namespace P2L
 
             if (this.listForMultiLightsControl.Count > 0)
             {
-                KincoLightManager.Boss cmdBoss = new Boss();
-                LedOnOffStatus toStatus = LedOnOffStatus.Off;
                 if (this.ckLightOff.Checked)
-                    toStatus = LedOnOffStatus.Off;
+                {
+                    CommandCenter.TurnOffMutiLights(this.listForMultiLightsControl.ToArray());
+                }
                 else if (this.ckLightOn.Checked)
-                    toStatus = LedOnOffStatus.GreenOn;
-                cmdBoss.SendLedOnOffControlCmd(toStatus, this.listForMultiLightsControl.ToArray());
+                {
+                    CommandCenter.TurnOnMutiLights(this.listForMultiLightsControl.ToArray());
+                }
             }
         }
 
@@ -377,16 +366,12 @@ namespace P2L
                 Messenger.ShowException("請選擇您要閃爍的燈!");
                 return;
             }
-
-
-            KincoLightManager.Boss cmdBoss = new Boss();
-            LedFlashStatus toStatus = LedFlashStatus.Green_Flash;
-
+            
             LedFlashParamPicker frm = new LedFlashParamPicker();
             DialogResult result = frm.ShowDialog(this);
             if (result == System.Windows.Forms.DialogResult.OK)
             {
-                cmdBoss.SendLedFlashControlCmd(toStatus, frm.OnTime, frm.OffTime, frm.FlashCount, this.listForFlashControl.ToArray());
+                CommandCenter.FlashMutiLights(frm.OnTime, frm.OffTime, frm.FlashCount, this.listForFlashControl.ToArray());
             }
         }
 
@@ -399,7 +384,7 @@ namespace P2L
 
         private void btSendCommand_Click(object sender, EventArgs e)
         {
-            if (tabControl.SelectedTabPage == pageMutiRackControl)
+            if (tabControl.SelectedTabPage == pageMutiControl)
             {
                 this.SendMutiRackControlCmd();
             }
@@ -415,7 +400,7 @@ namespace P2L
 
         private void tabControl_SelectedPageChanged(object sender, DevExpress.XtraTab.TabPageChangedEventArgs e)
         {
-            if (e.Page == pageMutiRackControl)
+            if (e.Page == pageMutiControl)
                 this.bbiSelect.Visibility = DevExpress.XtraBars.BarItemVisibility.Never;
             else
                 this.bbiSelect.Visibility = DevExpress.XtraBars.BarItemVisibility.Always;

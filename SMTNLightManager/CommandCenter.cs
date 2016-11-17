@@ -24,6 +24,21 @@ namespace SMTNLightManager
             return result;
         }
 
+        public static bool TurnOnLed(string locatorNo)
+        {
+            return ControlSingleLighting(locatorNo, LedAction.On, 0, 0, 0);
+        }
+
+        public static bool TurnOffLed(string locatorNo)
+        {
+            return ControlSingleLighting(locatorNo, LedAction.Off, 0, 0, 0);
+        }
+
+        public static bool FlashLed(string locatorNo, int turnOnTime, int turnOffTime, int cycle)
+        {
+            return ControlSingleLighting(locatorNo, LedAction.Flash, turnOnTime, turnOffTime, cycle);
+        }
+
         /// <summary>
         /// 多灯控制
         /// </summary>
@@ -44,6 +59,41 @@ namespace SMTNLightManager
             }
             return result;
         }
+
+        /// <summary>
+        /// 打開多個燈
+        /// </summary>
+        /// <param name="locators"></param>
+        /// <returns></returns>
+        public static bool TurnOnMutiLights(params string[] locators)
+        {
+           return ControlMultiLighting(LedAction.On, 0, 0, 0, locators);
+        }
+
+        /// <summary>
+        /// 關閉多個燈
+        /// </summary>
+        /// <param name="locators"></param>
+        /// <returns></returns>
+        public static bool TurnOffMutiLights(params string[] locators)
+        {
+            return ControlMultiLighting(LedAction.Off, 0, 0, 0, locators);
+        }
+
+        /// <summary>
+        /// 閃爍多個燈
+        /// </summary>
+        /// <param name="turnOnTime"></param>
+        /// <param name="turnOffTime"></param>
+        /// <param name="cycle"></param>
+        /// <param name="locators"></param>
+        /// <returns></returns>
+        public static bool FlashMutiLights(int turnOnTime, int turnOffTime, int cycle, params string[] locators)
+        {
+            return ControlMultiLighting(LedAction.Flash, turnOnTime, turnOffTime, cycle, locators);
+        }
+
+
 
         /// <summary>
         /// 全亮
@@ -141,8 +191,35 @@ namespace SMTNLightManager
 
             result = LedControlProxy.ReelShelfControlService.LightHouseControl(boardNo, iAction);
             System.Threading.Thread.Sleep(100); //间隔100毫秒，以便命令执行完成
-            return result;
-  
+            return result;  
+        }
+
+        public static bool LightHouseControl(LedAction action, params string[] locatorsOrBoardNos)
+        {
+            if (locatorsOrBoardNos != null)
+            {
+                List<string> boards = new List<string>();
+                string boardNo = string.Empty;
+                foreach (string s in locatorsOrBoardNos)
+                {
+                    if (s.Length > 3)
+                    {
+                        boardNo = s.Substring(0, 3);
+                    }
+                    else if (s.Length == 3)
+                    {
+                        boardNo = s;
+                    }
+                    else
+                    {
+                        boardNo = s.PadLeft(3, '0');
+                    }
+                    if (boards.Contains(boardNo)) continue;
+                    boards.Add(boardNo);
+                }
+                boards.ForEach(f => LightHouseControl(f, action));
+            }
+            return true;
         }
 
     }

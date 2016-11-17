@@ -33,6 +33,9 @@
             this.navBarGroup1 = new DevExpress.XtraNavBar.NavBarGroup();
             this.nbRegRack = new DevExpress.XtraNavBar.NavBarItem();
             this.nbRackLEDControl = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarGroup2 = new DevExpress.XtraNavBar.NavBarGroup();
+            this.navBarItemRegSMTN = new DevExpress.XtraNavBar.NavBarItem();
+            this.navBarItemSMTNLedControl = new DevExpress.XtraNavBar.NavBarItem();
             this.xtraTabbedMdiManager = new DevExpress.XtraTabbedMdi.XtraTabbedMdiManager(this.components);
             this.dockManager1 = new DevExpress.XtraBars.Docking.DockManager(this.components);
             this.dockPanel1 = new DevExpress.XtraBars.Docking.DockPanel();
@@ -50,10 +53,13 @@
             this.navBarControl1.ContentButtonHint = null;
             this.navBarControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.navBarControl1.Groups.AddRange(new DevExpress.XtraNavBar.NavBarGroup[] {
-            this.navBarGroup1});
+            this.navBarGroup1,
+            this.navBarGroup2});
             this.navBarControl1.Items.AddRange(new DevExpress.XtraNavBar.NavBarItem[] {
             this.nbRegRack,
-            this.nbRackLEDControl});
+            this.nbRackLEDControl,
+            this.navBarItemRegSMTN,
+            this.navBarItemSMTNLedControl});
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Name = "navBarControl1";
             this.navBarControl1.OptionsNavPane.ExpandedWidth = 189;
@@ -64,7 +70,7 @@
             // 
             // navBarGroup1
             // 
-            this.navBarGroup1.Caption = "";
+            this.navBarGroup1.Caption = "深圳步科";
             this.navBarGroup1.DragDropFlags = DevExpress.XtraNavBar.NavBarDragDrop.None;
             this.navBarGroup1.Expanded = true;
             this.navBarGroup1.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsList;
@@ -89,6 +95,33 @@
             this.nbRackLEDControl.Name = "nbRackLEDControl";
             this.nbRackLEDControl.SmallImage = global::P2L.Properties.Resources._switch;
             this.nbRackLEDControl.Tag = "KincoRackControl";
+            // 
+            // navBarGroup2
+            // 
+            this.navBarGroup2.Caption = "蘇州立宇";
+            this.navBarGroup2.Expanded = true;
+            this.navBarGroup2.GroupStyle = DevExpress.XtraNavBar.NavBarGroupStyle.LargeIconsList;
+            this.navBarGroup2.ItemLinks.AddRange(new DevExpress.XtraNavBar.NavBarItemLink[] {
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemRegSMTN),
+            new DevExpress.XtraNavBar.NavBarItemLink(this.navBarItemSMTNLedControl)});
+            this.navBarGroup2.Name = "navBarGroup2";
+            // 
+            // navBarItemRegSMTN
+            // 
+            this.navBarItemRegSMTN.CanDrag = false;
+            this.navBarItemRegSMTN.Caption = "註冊貨架儲位";
+            this.navBarItemRegSMTN.LargeImage = global::P2L.Properties.Resources.settings;
+            this.navBarItemRegSMTN.Name = "navBarItemRegSMTN";
+            this.navBarItemRegSMTN.SmallImage = global::P2L.Properties.Resources.settings;
+            this.navBarItemRegSMTN.Tag = "RegisterSMTNRack";
+            // 
+            // navBarItemSMTNLedControl
+            // 
+            this.navBarItemSMTNLedControl.Caption = "貨架燈控中心";
+            this.navBarItemSMTNLedControl.LargeImage = global::P2L.Properties.Resources._switch;
+            this.navBarItemSMTNLedControl.Name = "navBarItemSMTNLedControl";
+            this.navBarItemSMTNLedControl.SmallImage = global::P2L.Properties.Resources._switch;
+            this.navBarItemSMTNLedControl.Tag = "SMTNRackControl";
             // 
             // xtraTabbedMdiManager
             // 
@@ -140,7 +173,7 @@
             this.IsMdiContainer = true;
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "步科智能電子貨架演示系統";
+            this.Text = "智能電子貨架演示系統";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.navBarControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xtraTabbedMdiManager)).EndInit();
@@ -161,6 +194,9 @@
         private DevExpress.XtraBars.Docking.DockPanel dockPanel1;
         private DevExpress.XtraBars.Docking.ControlContainer dockPanel1_Container;
         private DevExpress.XtraBars.Docking.DockManager dockManager1;
+        private DevExpress.XtraNavBar.NavBarGroup navBarGroup2;
+        private DevExpress.XtraNavBar.NavBarItem navBarItemRegSMTN;
+        private DevExpress.XtraNavBar.NavBarItem navBarItemSMTNLedControl;
 
     }
 }

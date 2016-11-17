@@ -179,6 +179,7 @@
             // 
             // ckBackSide
             // 
+            this.ckBackSide.EditValue = true;
             this.ckBackSide.Location = new System.Drawing.Point(340, 246);
             this.ckBackSide.Name = "ckBackSide";
             this.ckBackSide.Properties.Caption = "背面";
@@ -188,6 +189,7 @@
             // 
             // ckFrontSide
             // 
+            this.ckFrontSide.EditValue = true;
             this.ckFrontSide.Location = new System.Drawing.Point(10, 246);
             this.ckFrontSide.Name = "ckFrontSide";
             this.ckFrontSide.Properties.Caption = "正面";
@@ -371,7 +373,7 @@
             // nColEnd
             // 
             this.nColEnd.EditValue = new decimal(new int[] {
-            0,
+            100,
             0,
             0,
             0});
@@ -386,7 +388,7 @@
             // nColStart
             // 
             this.nColStart.EditValue = new decimal(new int[] {
-            0,
+            1,
             0,
             0,
             0});
@@ -401,7 +403,7 @@
             // nLevelEnd
             // 
             this.nLevelEnd.EditValue = new decimal(new int[] {
-            0,
+            7,
             0,
             0,
             0});
@@ -416,7 +418,7 @@
             // nLevelStart
             // 
             this.nLevelStart.EditValue = new decimal(new int[] {
-            0,
+            1,
             0,
             0,
             0});
@@ -430,6 +432,7 @@
             // 
             // txtRackCellCodePrefix
             // 
+            this.txtRackCellCodePrefix.EditValue = "SMTN";
             this.txtRackCellCodePrefix.Location = new System.Drawing.Point(87, 150);
             this.txtRackCellCodePrefix.Name = "txtRackCellCodePrefix";
             this.txtRackCellCodePrefix.Properties.ReadOnly = true;
@@ -730,7 +733,7 @@
             this.ClientSize = new System.Drawing.Size(669, 538);
             this.Controls.Add(this.layoutControl1);
             this.Name = "RegisterSMTNRack";
-            this.Text = "SMTN貨架註冊";
+            this.Text = "立宇貨架註冊中心";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             ((System.ComponentModel.ISupportInitialize)(this.layoutControl1)).EndInit();
             this.layoutControl1.ResumeLayout(false);

@@ -14,6 +14,17 @@ namespace P2L
           return  DBAccessor.FromDefaultDb().ExecuteScalar<decimal>("SELECT SEQ_ID.NEXTVAL FROM DUAL ");
         }
 
+        public static decimal GetRackCount(string rackVendor)
+        {
+            string cmd = @"SELECT COUNT('*')   FROM (SELECT DISTINCT RACK_LOCATOR_ID
+FROM IMS_INTELLIGENT_RACK_CELL_INFO
+WHERE RACK_VENDOR = :RACK_VENDOR ) V";
+
+            return DBAccessor.FromDefaultDb().ExecuteScalarByKeyValuePairs<decimal>(
+                cmd,
+                new KeyValuePair<string, object>("RACK_VENDOR", rackVendor));
+        }
+
         public static decimal GetLocatorID(string locatorCode)
         {
             string cmd = " SELECT ID FROM IMS_LOCATOR WHERE CODE=:CODE";
@@ -30,13 +41,15 @@ namespace P2L
             return tb.FirstOrDefault();
         }
 
-        public static bool RackAddressExists(decimal rackAddress)
+        public static bool RackAddressExists(string rackVendor,decimal rackAddress)
         {
             string cmd = @" SELECT COUNT('*')
     FROM IMS_INTELLIGENT_RACK_CELL_INFO  A
-    WHERE A.RACK_ADDRESS IN (:ADDRESS, :ADDRESS+1)";
+    WHERE RACK_VENDOR = :RACK_VENDOR
+      AND A.RACK_ADDRESS IN (:ADDRESS, :ADDRESS+1)";
             decimal count = DBAccessor.FromDefaultDb().ExecuteScalarByKeyValuePairs<decimal>(
                  cmd,
+                 new KeyValuePair<string, object>("RACK_VENDOR", rackVendor),
                  new KeyValuePair<string, object>("ADDRESS", rackAddress));
             if (count > 0) 
                 return true; 
