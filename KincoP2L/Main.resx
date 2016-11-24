@@ -120,6 +120,83 @@
   <metadata name="xtraTabbedMdiManager.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>20, 12</value>
   </metadata>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAICAAAAEAIACoEAAAFgAAACgAAAAgAAAAQAAAAAEAIAAAAAAAABAAAMMOAADDDgAAAAAAAAAA
+        AAAdHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8aGsH/HBzC/x0dwv8aGsH/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/ICDD/15e1P+jo+b/paXn/2Rk
+        1f8iIsP/HBzC/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/xsbwf8bG8L/IiLD/yEhw/8bG8H/GxvC/x0dwv8dHcL/HR3C/xwcwv9yctn/8/P8////
+        ////////9vb9/3193P8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8bG8L/QUHM/5KS4f++vu3/u7vt/4mJ3/84OMn/GxvB/x0dwv8cHML/LCzG/9HR
+        8///////////////////////29v1/zMzyP8cHML/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/GxvB/1RU0f/c3PX//////////////////////8/P8v9FRc3/GhrB/xoa
+        wf84OMn/5ub4///////////////////////s7Pr/QkLM/xsbwf8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/xwcwv8uLsf/y8vx/////////////////////////////////7m5
+        7P87O8r/RUXN/1VV0f+8vO3/8fH7/////////////////87O8v8sLMb/GxvC/xoawf8ZGcH/GhrB/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/GhrB/11d0//5+f3/////////////////////////
+        ////////9PT8/2pq1/8uLsf/KCjF/ywsxv9NTc//pqbn//f3/f/j4/f/YWHU/xkZwf8oKMX/UFDQ/2Fh
+        1P9JSc7/IyPE/xsbwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8ZGcH/dXXa////////////////////
+        ///////////////////6+v7/XV3T/xgYwf8cHML/HBzC/xoawf8iIsP/dnba/1lZ0v8ZGcH/R0fN/76+
+        7f/z8/z/+/v+/+/v+/+qquj/NjbJ/xsbwv8dHcL/HR3C/x0dwv8dHcL/HR3C/xkZwf9hYdT/+vr+////
+        //////////////////////////////Ly/P9NTc//GhrB/x0dwv8dHcL/HR3C/xwcwv8lJcT/TU3P/zg4
+        yf/NzfH///////////////////////////+wsOr/JibE/xwcwv8dHcL/HR3C/x0dwv8dHcL/HBzC/zIy
+        yP/S0vP/////////////////////////////////wMDu/yYmxP8aGsH/HR3C/x0dwv8dHcL/HR3C/xsb
+        wf9BQcz/jY3g//7+//////////////////////////////X1/P9UVNH/GhrB/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/GxvB/15e1P/l5fj//////////////////////9ra9f9LS87/Pz/L/0NDzP8bG8H/HR3C/x0d
+        wv8dHcL/GxvC/zMzyP++vu3//////////////////////////////////////3V12v8ZGcH/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HBzC/0xMz/+jo+b/zMzx/83N8v+rq+j/RUXN/1tb0//Y2PT/zc3y/zk5
+        yf8bG8H/HR3C/x0dwv8bG8L/MTHH/6+v6v/////////////////////////////////8/P7/ZmbW/xkZ
+        wf8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/GxvB/x4ewv8mJsX/KirF/2Ji1f+jo+b/8vL7////
+        ////////srLq/yoqxf8cHML/HR3C/xsbwf89Pcv/aWnX/+vr+v///////////////////////////9jY
+        9P82Nsn/GxvC/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HBzC/zIyyP+WluP/yMjw/7Oz
+        6//6+v7////////////+/v//lJTi/yAgw/8cHML/ISHD/1JS0P8mJsT/fX3c//Dw+///////////////
+        ///k5Pj/YmLV/xsbwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8fH8P/oKDl////
+        ////////u7vt/7e37P/+/v/////////////39/3/dXXa/x4ewv9JSc7/dXXa/ycnxf8eHsL/VlbR/5ub
+        5P+wsOr/kZHh/0dHzf8cHML/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HBzC/yws
+        xv/V1fT////////////9/f7/yMjw/97e9v/////////////////q6vn/eXnb/zs7yv90dNr/c3PZ/xoa
+        wf8aGsH/HBzC/x4ewv8bG8H/GxvB/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/IiLD/7W16/////////////////+3t+z/VlbR/9LS8//////////////////V1fT/NzfJ/0tL
+        z//NzfH/PDzK/xsbwf8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8bG8L/RkbN/76+7f/k5Pj/vr7t/0ZGzf8YGMH/SkrO/9fX9P//////////////
+        //+8vO3/SUnO/9jY9P+amuT/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8bG8L/JyfF/zg4yf8nJ8X/GxvC/x0dwv8aGsH/SkrO/9LS
+        8//////////////////MzPH/4eH3/+np+f9FRc3/GxvB/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8cHML/GxvC/xwcwv8dHcL/HR3C/x0d
+        wv8aGsH/QEDL/7297f///////////////////////////5CQ4f8bG8L/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8bG8H/Li7G/5KS4v/v7/v/////////////////zMzx/ykpxf8cHML/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8cHML/Hh7C/1hY0v/Cwu///Pz+///////S0vP/KyvG/xwc
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/GhrB/ysrxv9wcNj/qKjo/2dn
+        1v8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HBzC/xoa
+        wf8dHcL/GxvC/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0dwv8dHcL/HR3C/x0d
+        wv8dHcL/HR3C/x0dwv8dHcL/AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=
+</value>
+  </data>
   <metadata name="dockManager1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>213, 12</value>
   </metadata>
