@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading.Tasks;
 using SMTNLightManager;
+using System.Xml.Linq;
 
 namespace P2L
 {
@@ -36,8 +37,16 @@ namespace P2L
             this.listForMultiLightsControl.Clear();
             this.listForFlashControl.Clear();
 
-            this.rackDataSet.Clear();
-            this.rackDataSet.IMS_RACK.Merge(LocatorManager.GetRackInfoTable("SMTN"));
+            try
+            {
+                this.rackDataSet.Clear();
+                this.rackDataSet.IMS_RACK.Merge(LocatorManager.GetRackInfoTable("SMTN"));
+            }
+            catch (Exception ex)
+            {
+                this.InitSmtnData();
+            }
+   
             foreach (var x in this.rackDataSet.IMS_RACK)
             {
                 x.CHECKED = false;
@@ -62,6 +71,19 @@ namespace P2L
                 ck.Checked = false;
 
 
+        }
+
+        private void InitSmtnData()
+        {
+            string fileName =@"d:\smtn_rack_data.xml";
+            bool exists = System.IO.File.Exists(fileName);
+            if (!exists)
+            {
+              XDocument doc=  XDocument.Parse(Properties.Resources.smtn_rack_data);
+              doc.Save(fileName);
+            }
+            this.rackDataSet.Clear();
+            this.rackDataSet.ReadXml(fileName);
         }
 
         private void Init()
@@ -227,11 +249,13 @@ namespace P2L
         private void bbiTurnOffLED_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             CommandCenter.TurnOffLed(tempLed.LocatorCode);
+            tempLed.ImageIndex = 0;
         }
 
         private void bbiTurnOnLED_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             CommandCenter.TurnOnLed(tempLed.LocatorCode);
+            tempLed.ImageIndex = 1;
         }
 
 
@@ -247,6 +271,7 @@ namespace P2L
             if (result == System.Windows.Forms.DialogResult.OK)
             {
                 CommandCenter.FlashLed(tempLed.LocatorCode, frm.OnTime, frm.OffTime, frm.FlashCount);
+                tempLed.ImageIndex = 4;
             }           
         }
 

@@ -1,0 +1,11 @@
+<?xml version="1.0" standalone="yes"?>
+<RackDataSet xmlns="http://tempuri.org/RackDataSet.xsd">
+  <IMS_RACK>
+    <CODE>SMTN-001</CODE>
+    <FRONT_ADDRESS>1</FRONT_ADDRESS>
+    <BACK_ADDRESS>2</BACK_ADDRESS>
+    <CHECKED>false</CHECKED>
+    <CHECKED_FRONT>false</CHECKED_FRONT>
+    <CHECKED_BACK>false</CHECKED_BACK>
+  </IMS_RACK>
+</RackDataSet>
