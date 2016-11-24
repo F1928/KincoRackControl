@@ -249,11 +249,13 @@ namespace P2L
         private void bbiTurnOffLED_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             CommandCenter.TurnOffLed(tempLed.LocatorCode);
+            tempLed.ImageIndex = 0;
         }
 
         private void bbiTurnOnLED_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
             CommandCenter.TurnOnLed(tempLed.LocatorCode);
+            tempLed.ImageIndex = 1;
         }
 
 
@@ -269,6 +271,7 @@ namespace P2L
             if (result == System.Windows.Forms.DialogResult.OK)
             {
                 CommandCenter.FlashLed(tempLed.LocatorCode, frm.OnTime, frm.OffTime, frm.FlashCount);
+                tempLed.ImageIndex = 4;
             }           
         }
 
