@@ -98,8 +98,8 @@ namespace P2L
             this.tableLayoutPanelBack.ColumnCount = 100;
             for (int i = 0; i < 10; i++)
             {
-                this.tableLayoutPanelFront.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46));
-                this.tableLayoutPanelBack.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 46));
+                this.tableLayoutPanelFront.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50));
+                this.tableLayoutPanelBack.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50));
             }
             for (int i = 0; i < 100; i++)
             {

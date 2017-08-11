@@ -63,8 +63,8 @@
             this.navBarItemSMTNLedControl});
             this.navBarControl1.Location = new System.Drawing.Point(0, 0);
             this.navBarControl1.Name = "navBarControl1";
-            this.navBarControl1.OptionsNavPane.ExpandedWidth = 189;
-            this.navBarControl1.Size = new System.Drawing.Size(194, 437);
+            this.navBarControl1.OptionsNavPane.ExpandedWidth = 225;
+            this.navBarControl1.Size = new System.Drawing.Size(225, 515);
             this.navBarControl1.TabIndex = 1;
             this.navBarControl1.Text = "navBarControl1";
             this.navBarControl1.LinkClicked += new DevExpress.XtraNavBar.NavBarLinkEventHandler(this.navBarControl1_LinkClicked);
@@ -79,6 +79,7 @@
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbRegRack),
             new DevExpress.XtraNavBar.NavBarItemLink(this.nbRackLEDControl)});
             this.navBarGroup1.Name = "navBarGroup1";
+            this.navBarGroup1.Visible = false;
             // 
             // nbRegRack
             // 
@@ -154,22 +155,23 @@
             this.dockPanel1.Options.FloatOnDblClick = false;
             this.dockPanel1.Options.ShowCloseButton = false;
             this.dockPanel1.Options.ShowMaximizeButton = false;
-            this.dockPanel1.Size = new System.Drawing.Size(200, 465);
+            this.dockPanel1.OriginalSize = new System.Drawing.Size(233, 542);
+            this.dockPanel1.Size = new System.Drawing.Size(233, 542);
             this.dockPanel1.Text = "功能導航";
             // 
             // dockPanel1_Container
             // 
             this.dockPanel1_Container.Controls.Add(this.navBarControl1);
-            this.dockPanel1_Container.Location = new System.Drawing.Point(3, 25);
+            this.dockPanel1_Container.Location = new System.Drawing.Point(4, 23);
             this.dockPanel1_Container.Name = "dockPanel1_Container";
-            this.dockPanel1_Container.Size = new System.Drawing.Size(194, 437);
+            this.dockPanel1_Container.Size = new System.Drawing.Size(225, 515);
             this.dockPanel1_Container.TabIndex = 0;
             // 
             // Main
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(621, 465);
+            this.ClientSize = new System.Drawing.Size(724, 542);
             this.Controls.Add(this.dockPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.IsMdiContainer = true;

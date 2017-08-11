@@ -29,7 +29,7 @@ namespace P2L
         {
             this.rackDataSet.Clear();
             this.txtRackCellCodePrefix.Text = RackVendor;
-            this.txtRackParentLocatorCode.Text = string.Empty;
+            //this.txtRackParentLocatorCode.Text = string.Empty;
 
             decimal count = LocatorManager.GetRackCount(RackVendor);
             this.txtRackLocatorCode.Text = string.Format("{0}-{1}", this.RackVendor, (count + 1).ToString().PadLeft(3, '0'));

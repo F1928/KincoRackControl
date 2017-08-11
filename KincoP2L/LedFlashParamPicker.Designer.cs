@@ -32,8 +32,6 @@
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.spOnTime = new DevExpress.XtraEditors.SpinEdit();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl3 = new DevExpress.XtraEditors.LabelControl();
-            this.labelControl4 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl5 = new DevExpress.XtraEditors.LabelControl();
             this.spOffTime = new DevExpress.XtraEditors.SpinEdit();
             this.btOK = new DevExpress.XtraEditors.SimpleButton();
@@ -49,7 +47,7 @@
             0,
             0,
             0});
-            this.spFlashCount.Location = new System.Drawing.Point(107, 27);
+            this.spFlashCount.Location = new System.Drawing.Point(125, 31);
             this.spFlashCount.Name = "spFlashCount";
             this.spFlashCount.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -63,12 +61,12 @@
             0,
             0,
             0});
-            this.spFlashCount.Size = new System.Drawing.Size(110, 21);
+            this.spFlashCount.Size = new System.Drawing.Size(128, 20);
             this.spFlashCount.TabIndex = 0;
             // 
             // labelControl1
             // 
-            this.labelControl1.Location = new System.Drawing.Point(23, 30);
+            this.labelControl1.Location = new System.Drawing.Point(27, 35);
             this.labelControl1.Name = "labelControl1";
             this.labelControl1.Size = new System.Drawing.Size(48, 14);
             this.labelControl1.TabIndex = 1;
@@ -77,11 +75,11 @@
             // spOnTime
             // 
             this.spOnTime.EditValue = new decimal(new int[] {
-            1000,
+            10,
             0,
             0,
             0});
-            this.spOnTime.Location = new System.Drawing.Point(107, 65);
+            this.spOnTime.Location = new System.Drawing.Point(125, 76);
             this.spOnTime.Name = "spOnTime";
             this.spOnTime.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -95,36 +93,20 @@
             0,
             0,
             0});
-            this.spOnTime.Size = new System.Drawing.Size(110, 21);
+            this.spOnTime.Size = new System.Drawing.Size(128, 20);
             this.spOnTime.TabIndex = 2;
             // 
             // labelControl2
             // 
-            this.labelControl2.Location = new System.Drawing.Point(23, 68);
+            this.labelControl2.Location = new System.Drawing.Point(27, 79);
             this.labelControl2.Name = "labelControl2";
             this.labelControl2.Size = new System.Drawing.Size(72, 14);
             this.labelControl2.TabIndex = 3;
             this.labelControl2.Text = "亮燈持續時間";
             // 
-            // labelControl3
-            // 
-            this.labelControl3.Location = new System.Drawing.Point(224, 68);
-            this.labelControl3.Name = "labelControl3";
-            this.labelControl3.Size = new System.Drawing.Size(24, 14);
-            this.labelControl3.TabIndex = 4;
-            this.labelControl3.Text = "毫秒";
-            // 
-            // labelControl4
-            // 
-            this.labelControl4.Location = new System.Drawing.Point(224, 105);
-            this.labelControl4.Name = "labelControl4";
-            this.labelControl4.Size = new System.Drawing.Size(24, 14);
-            this.labelControl4.TabIndex = 7;
-            this.labelControl4.Text = "毫秒";
-            // 
             // labelControl5
             // 
-            this.labelControl5.Location = new System.Drawing.Point(23, 105);
+            this.labelControl5.Location = new System.Drawing.Point(27, 122);
             this.labelControl5.Name = "labelControl5";
             this.labelControl5.Size = new System.Drawing.Size(72, 14);
             this.labelControl5.TabIndex = 6;
@@ -133,11 +115,11 @@
             // spOffTime
             // 
             this.spOffTime.EditValue = new decimal(new int[] {
-            500,
+            10,
             0,
             0,
             0});
-            this.spOffTime.Location = new System.Drawing.Point(107, 102);
+            this.spOffTime.Location = new System.Drawing.Point(125, 119);
             this.spOffTime.Name = "spOffTime";
             this.spOffTime.Properties.Buttons.AddRange(new DevExpress.XtraEditors.Controls.EditorButton[] {
             new DevExpress.XtraEditors.Controls.EditorButton()});
@@ -151,29 +133,27 @@
             0,
             0,
             0});
-            this.spOffTime.Size = new System.Drawing.Size(110, 21);
+            this.spOffTime.Size = new System.Drawing.Size(128, 20);
             this.spOffTime.TabIndex = 5;
             // 
             // btOK
             // 
             this.btOK.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.btOK.Location = new System.Drawing.Point(142, 143);
+            this.btOK.Location = new System.Drawing.Point(166, 167);
             this.btOK.Name = "btOK";
-            this.btOK.Size = new System.Drawing.Size(75, 38);
+            this.btOK.Size = new System.Drawing.Size(87, 44);
             this.btOK.TabIndex = 8;
             this.btOK.Text = "確    定";
             // 
             // LedFlashParamPicker
             // 
             this.AcceptButton = this.btOK;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(257, 193);
+            this.ClientSize = new System.Drawing.Size(300, 225);
             this.Controls.Add(this.btOK);
-            this.Controls.Add(this.labelControl4);
             this.Controls.Add(this.labelControl5);
             this.Controls.Add(this.spOffTime);
-            this.Controls.Add(this.labelControl3);
             this.Controls.Add(this.labelControl2);
             this.Controls.Add(this.spOnTime);
             this.Controls.Add(this.labelControl1);
@@ -196,8 +176,6 @@
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SpinEdit spOnTime;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private DevExpress.XtraEditors.LabelControl labelControl3;
-        private DevExpress.XtraEditors.LabelControl labelControl4;
         private DevExpress.XtraEditors.LabelControl labelControl5;
         private DevExpress.XtraEditors.SpinEdit spOffTime;
         private DevExpress.XtraEditors.SimpleButton btOK;

@@ -77,7 +77,12 @@ namespace SMTNLightManager
         /// <returns></returns>
         public static bool TurnOffMutiLights(params string[] locators)
         {
-            return ControlMultiLighting(LedAction.Off, 0, 0, 0, locators);
+            foreach(string loc in locators)
+            {
+                ControlSingleLighting(loc, LedAction.Off, 0, 0, 0);
+            }
+            return true;
+            //return ControlMultiLighting(LedAction.Off, 0, 0, 0, locators);
         }
 
         /// <summary>
@@ -90,7 +95,13 @@ namespace SMTNLightManager
         /// <returns></returns>
         public static bool FlashMutiLights(int turnOnTime, int turnOffTime, int cycle, params string[] locators)
         {
-            return ControlMultiLighting(LedAction.Flash, turnOnTime, turnOffTime, cycle, locators);
+            foreach (string loc in locators)
+            {
+                ControlSingleLighting(loc, LedAction.Flash, turnOnTime, turnOffTime, cycle);
+            }
+            return true;
+            //return ControlMultiLighting(LedAction.Flash, turnOnTime, turnOffTime, cycle, locators);
+
         }
 
 
